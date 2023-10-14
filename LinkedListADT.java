@@ -94,12 +94,4 @@ public class LinkedListADT<T>{
 		return false;
 	}
 	
-	public void display(){
-		Node<T> tmp = head;
-		while(tmp!=null){
-			System.out.print(((Contact)tmp.data).getContactname()+"->");
-			tmp = tmp.next;
-		}
-	}
-	
 }
