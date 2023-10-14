@@ -68,8 +68,7 @@ public class LinkedListADT<T>{
 				}
 			else{
 					Node<T> inQueue = null, tmp = head;
-					boolean isEqual = (((Contact)tmp.data).compareTo(((Contact)c).getContactname())<=0);
-					while(tmp!=null&&isEqual){
+					while(tmp!=null&&(((Contact)tmp.data).compareTo(((Contact)c).getContactname())<=0)){
 						inQueue = tmp;
 						tmp = tmp.next;
 					}
