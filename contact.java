@@ -73,13 +73,17 @@ public int compareTo(String n) {
 	// TODO Auto-generated method stub
 	return (name.compareTo(n));
 }
+public void read_contact()
+	{
+System.out.println("Enter the contact's name");
+name=read.nextLine();
+System.out.println("Enter the phone number");		
 
 
 
 
 
-
-
+	}
 
 
 
