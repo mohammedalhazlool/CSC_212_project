@@ -10,7 +10,7 @@ private String birthday;
 private String notes;
 private String email;
 private String address;
-public contact() {
+public Contact() {
 	
 }
 public Contact(String name, String number, String birthday, String notes, String email, String address) {
