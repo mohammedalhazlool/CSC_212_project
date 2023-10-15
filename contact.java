@@ -2,7 +2,7 @@ package a;
 
 import java.util.Scanner;
 
-public class contact implements Comparable<String>
+public class Contact implements Comparable<String>
 {
 private String name;
 private String number;
@@ -13,7 +13,7 @@ private String address;
 public contact() {
 	
 }
-public contact(String name, String number, String birthday, String notes, String email, String address) {
+public Contact(String name, String number, String birthday, String notes, String email, String address) {
 	this.name= name;
 	this.number=number;
 	this.birthday=birthday;
@@ -22,7 +22,7 @@ public contact(String name, String number, String birthday, String notes, String
 	this.address=address;
 }
 
-public contact(contact a) {
+public Contact(Contact a) {
 	this.address=a.address;
 	this.email=a.email;
 	this.name=a.name;
