@@ -62,13 +62,13 @@ public class LinkedListADT<T>{
 			current = head = new Node<T>(c);
 		if(!search(c)){
 			Node<T> n = new Node<T>(c);
-			if(((Contact)c).compareTo(((Contact)head.data).getContactname())<0){
+			if(((Contact)c).compareTo(((Contact)head.data).getName())<0){
 					n.next = head;
 					head = n;
 				}
 			else{
 					Node<T> inQueue = null, tmp = head;
-					while(tmp!=null&&(((Contact)tmp.data).compareTo(((Contact)c).getContactname())<=0)){
+					while(tmp!=null&&(((Contact)tmp.data).compareTo(((Contact)c).getName())<=0)){
 						inQueue = tmp;
 						tmp = tmp.next;
 					}
