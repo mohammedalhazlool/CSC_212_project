@@ -87,16 +87,33 @@ public int compareTo(String n) {
 }
 public void read_contact()
 	{
+Scanner read =new Scanner(System.in);
 System.out.println("Enter the contact's name");
 name=read.nextLine();
 System.out.println("Enter the phone number");		
-
-
-
-
-
+number=read.nextLine();
+System.out.println("Enter the birthday");		
+birthday=read.nextLine();
+System.out.println("Enter the notes");		
+notes=read.nextLine();
+System.out.println("Enter the email");		
+email=read.nextLine();
+System.out.println("Enter the address");		
+address=read.nextLine();
 	}
 
+@Override
+public String toString() {
+	return "Contact [name=" + name + ", number=" + number + ", birthday=" + birthday + ", notes=" + notes + ", email="
+			+ email + ", address=" + address + "]";
+}
+public void display_c() {
+System.out.println("name: "+name);	
+System.out.println("email: "+email);
+System.out.println("number: "+number);
+System.out.println("address: "+address);
+System.out.println("birthday: "+birthday);
+}
 
 
 
