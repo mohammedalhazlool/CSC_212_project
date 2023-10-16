@@ -9,7 +9,7 @@ MMA
 AUTHORS:
 Muhammed Alhithlool, 443101218
 ***********************************/
-package a;
+package project1;
 
 import java.util.Scanner;
 
@@ -21,16 +21,17 @@ private String birthday;
 private String notes;
 private String email;
 private String address;
-public Contact() {
-	
+public LinkedList<Event>contact_event=new LinkedList<Event>();	
+publi Contact(){
 }
+	
 public Contact(String name, String number, String birthday, String notes, String email, String address) {
-	this.name= name;
-	this.number=number;
-	this.birthday=birthday;
-	this.notes=notes;
-	this.email=email;
-	this.address=address;
+this.name= name;
+this.number=number;
+this.birthday=birthday;
+this.notes=notes;
+this.email=email;
+this.address=address;
 }
 
 public Contact(Contact a) {
