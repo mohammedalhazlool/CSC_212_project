@@ -7,7 +7,7 @@ private String Event_name;
 private String Event_date;
 private String Event_time;
 private Contact contact_with_same_event;
-public LinkedList<Event>Event1=new LinkedList<Event>();
+public LinkedListADT<Event>Event1=new LinkedListADT<Event>();
 
 public Event(String Event_title, String Event_Location,String Event_name, String Event_date, String Event_time) {
 	this.Event_title=Event_title;
@@ -63,7 +63,7 @@ public String toString() {
 			+ ", Event_date=" + Event_date + ", Event_time=" + Event_time + "]";
 }
 
-public LinkedList<Event> getEvent1() {
+public LinkedListADT<Event> getEvent1() {
 	return Event1;
 }
 
