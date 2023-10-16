@@ -90,7 +90,7 @@ public void add_contact(Contacts c) {
 	
 }
 
-public void delete contact(String n) {
+public void delete_contact(String n) {
 	if (contacts.empty()) {
 		System.out.print("empty List can not delete");
 		return;
