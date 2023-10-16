@@ -16,9 +16,8 @@ private String Event_title;
 private String Event_Location;
 private String Event_name;
 private String Event_date;
-private String Event_time;
-private Contact contact_with_same_event;
-public LinkedList<Event>Event1=new LinkedList<Event>();
+private String Event_time;	
+public LinkedList<Contact>contact__event=new LinkedList<Contact>();
 
 public Event(){
 }
@@ -77,8 +76,8 @@ public String toString() {
 			+ ", Event_date=" + Event_date + ", Event_time=" + Event_time + "]";
 }
 
-public LinkedList<Event> getEvent1() {
-	return Event1;
+public LinkedList<Contact> contact__event() {
+	return contact__event;
 }
 
 }
