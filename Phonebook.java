@@ -207,18 +207,31 @@ public static void print_contacts(Phonebook p1){
 }else
 System.out.println("is empty");
 }
-public static void print_contacts(LinkedList<Contact>A){
-	if(!A.contacts.isEmpty()){
-	p1.contacts>.FindFirst();
-	while(!p1.contacts.Last()){
-	p1.contacts.retrieve().display_c();
-	p1.contacts.findNext();	
+public static void print_contacts_byname(LinkedList<Contact>A){
+	if(!A.isEmpty()){
+	A.FindFirst();
+	while(!A.Last()){
+	System.out.println(A.retrieve().get_Name());
+	A.findNext();	
 	}
-        p1.contacts.retrieve().display_c();
+	System.out.println(A.retrieve().get_Name());
 }else
 System.out.println("is empty");
 }
 
+public static void print_List_Events(LinkedList<Event>A){
+	if(!A..isEmpty()){
+	A.FindFirst();
+	while(!A.Last()){
+	System.out.println(A.retrieve()+" linked with contacts: ");
+	print_contacts_byname(A.retrieve().contact_event);
+	A.findNext();	
+	}
+	System.out.println(A.retrieve()+" linked with contacts: ");
+	print_contacts_byname(A.retrieve().contact_event);
+}else
+System.out.println("is empty");
+}
 
 
 
