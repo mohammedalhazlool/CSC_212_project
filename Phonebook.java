@@ -207,6 +207,18 @@ public static void print_contacts(Phonebook p1){
 }else
 System.out.println("is empty");
 }
+public static void print_contacts(LinkedList<Contact>A){
+	if(!A.contacts.isEmpty()){
+	p1.contacts>.FindFirst();
+	while(!p1.contacts.Last()){
+	p1.contacts.retrieve().display_c();
+	p1.contacts.findNext();	
+	}
+        p1.contacts.retrieve().display_c();
+}else
+System.out.println("is empty");
+}
+
 
 
 
