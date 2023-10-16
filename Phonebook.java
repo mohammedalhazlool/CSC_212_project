@@ -7,7 +7,7 @@ EDIT DATE:
 TEAM:
 MMA
 AUTHORS:
-Abdullah Alsalman, 443105689
+Abdullah Alsalman 443105689 , Mohammed Alhithlool 443101218
 ***********************************/
 
 import java.util.Scanner;
