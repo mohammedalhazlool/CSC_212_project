@@ -5,7 +5,7 @@ Fall 2023
 EDIT DATE:
 13-10-2023
 TEAM:
-A+
+MMA
 AUTHORS:
 Muhannad Alasmari , 443102430
 ***********************************/
@@ -103,5 +103,11 @@ public class LinkedListADT<T>{
 		}
 		return false;
 	}
-	
+	public void display(){ //This method displays the data of all the linked list elements
+		Node tmp;
+		while(tmp!=null){
+			System.out.print(tmp.data+"->");
+			tmp = tmp.next;
+		}
+	}
 }
