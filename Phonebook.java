@@ -9,30 +9,27 @@ MMA
 AUTHORS:
 Abdullah Alsalman, 443105689
 ***********************************/
-package project;
-
 
 import java.util.Scanner;
 
 public class Phonebook {
-static LinkedListADT<Contact>contacts;
+	static LinkedList<Contact>contacts;
 
-public phonebook() {
-	
-	contacts = new LinkedListADT<Contact>();
-	
-}
+	public Phonebook() {
 
-public phonebook( LinkedListADT<Contact> contacts) {
-	this.contacts = contacts;
-	
-}
+		contacts = new LinkedList<Contact>();
+	}
+
+
+	public Phonebook(LinkedList<Contact> contacts) {
+		this.contacts = contacts;
+
+	}
 
 public void Add_Sorted_User(Contact d) {
 	
 	if (contacts.empty()) {
 		
-	}
 	contacts.add(d);
 	return;
 }
@@ -46,12 +43,12 @@ else {
 	}
 	
 	else {
-		while(!contacts.retrieve().compareTo(d.getContact_name())<=0) {
+		while(!contacts.retrieve().compareTo(d.getName())<=0) {
 			contacts.findNext();
 		}
 	}
 	
-	if(contacts.retrieve().compareTo(d.getContacts_name())>0) {
+	if(contacts.retrieve().compareTo(d.getName())>0) {
 		Contact c = new Contact(contacts.retrieve());
 		contacts.update(d);
 		contacts.add(c);
@@ -59,62 +56,108 @@ else {
 	else {
 		
 		d.display_contact();
-		contacts.add(d);
+		contacts.insert(d);
 		
 		}
 }
 }
+
 }
 
-public boolean search(Contact c) {
-	if(contacts.empty())
-		return false;
-	contacts.findFirst();
-	while(!contacts.isLast()) {
-		if(contacts.retrieve().getContact_name().equals(c.getContact_name())||contacts.retrieve().getPhone_num().equals(c.getPhone_num()))
-return true;
-contacts.findNext();
+	public boolean search(Contact c) {
+		if (contacts.empty())
+			return false;
+		contacts.findFirst();
+		while (!contacts.isLast()) {
+			if (contacts.retrieve().getName().equals(c.getName())
+					|| contacts.retrieve().getNumber().equals(c.getNumber()))
+				return true;
+			contacts.FindNext();
+		}
+		if (contacts.retrieve.getContact_name().equals(c.getContact_name())
+				|| contacts.retrieve().getPhone_num().equals(c.getPhone_num()))
+			return true;
+		else
+			return false;
 	}
-	if(contacts.retrieve.getContact_name().equals(c.getContact_name()) || contacts.retrieve().getPhone_num().equals(c.getPhone_num()))
-		return true;
-	else
-		return false;
-}
 
-public void add_contact(Contacts c) {
-	boolean found = search(c);
-	if(!found) {
-		contacts.addInOrder(c);
-		
+	public void add_contact(Contacts c) {
+		boolean found = search(c);
+		if (!found) {
+			contacts.Add_sorted1(c);
+
+		}
+
 	}
-	
-}
 
-public void delete_contact(String n) {
-	if (contacts.empty()) {
+public void delete
+
+	contact(String n) {
+	if (contacts.isEmpty()) {
 		System.out.print("empty List can not delete");
 		return;
 	}
 	contacts.findFirst();
 	while(!contacts.isLast()) {
 		if(contacts.retrieve.getContact_name().equals(n)) {
-			contact.delete();
+			contact.remove();
 			System.out.println(n+"contact deleted");
 		}
 		else System.out.println("can not be deleted because it does not exist");
 	}
+
+	public LinkedList<Contact> search__by_First_name(String n){
+		LinkedList<Contact>res = new LinkedList<Contact>();
+		if(all_contact.isEmpty())
+			return res;
+		all_contacts.FindFirst();
+		while(!all_contacts.retrieve()){
+			
+	String cur_Full_Name=all_contacts.retrieve().getContact_name();
+	String First_name=curr_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
+	if(First_name.equals(n))
+		res.insert(all_contacts.retrieve());
 	
-	
+	all_contacts.findNext();
+}
+		String cur_Full_Name=all_contacts.retrieve().getContact_name();
+		String First_name=curr_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
+		if(First_name.equals(n))
+			res.insert(all_contacts.retrieve());
+		return res;
+
+public Contact search__by_name(String n) {
+if(all_contacts.isEmpty()) 
+	return null;
+	all_contacts.FindFirst();
+	while(!all_contacts.last()) {
+		if(all_contacts.retrieve(getContact_name().equals(n))
+			return all_contacts.retrieve();
+		all_contacts_findNext();
+	}
+	if(all_contacts.retrieve(getContact_name().equals(n))
+			return all_contacts.retrieve();
+	return null;
 }
 
+	public Contact search__by_Phone(String ph) {
+		LinkedList<Contact> res = new LinkedList<Contact>();
+		if (contacts.empty())
+			return res;
+		contacts.findFirst();
+		while (!contacts.isLast()) {
+			if (contacts.retrieve().getNumber().equals(ph))
+				res.add(contacts.retrieve());
+			contacts.findNext();
+		}
+		if (contacts.retrieve().getNumber().equals(ph))
+			res.add(contacts.retrieve());
+		return res;
+	}
 
+}
 
-
-
-
-
-
-
+}
 
 
 
