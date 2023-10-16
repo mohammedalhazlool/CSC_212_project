@@ -1,3 +1,14 @@
+/***********************************
+CLASS: LinkedListADT.java
+CSC212 Data structures - Project phase I
+Fall 2023
+EDIT DATE:
+13-10-2023
+TEAM:
+MMA
+AUTHORS:
+Muhammed Alhithlool, 443101218
+***********************************/
 package Project1;
 
 public class Event {
