@@ -154,8 +154,46 @@ if(all_contacts.isEmpty())
 			res.add(contacts.retrieve());
 		return res;
 	}
+public LinkedList<Contact> search_email(string e){
+	LinkedList<Contact> r=new LinkedList<Contact>();
+	if(contacts.isEmpty())
+		return r;
+	contacts.FindFirst();
+	do {
+		if(contacts.retrieve().getEmail().equals(e)res.insert(contacts.retrieve()){
+		
+		contacts.findnext();}
+		
+	}while(!contactsLast);
+	if(contacts.retrieve().getEmail().equals(e)res.insert(contacts.retrieve())
+	return r;}
 
-}
+public LinkedList<Contact> search_address(string a){
+	LinkedList<Contact> r=new LinkedList<Contact>();
+	if(contacts.isEmpty())
+		return r;
+	contacts.FindFirst();
+	while(!contacts.List) {
+		if(contacts.retrieve().getAddress().equals(a)res.insert(contacts.retrieve());
+		contacts.findnext(){
+		contacts.FindFirst();	}
+		
+		if(contacts.retrieve().getAddress().equals(a)res.insert(contacts.retrieve())
+				return r;}
+	public LinkedList<Contact> search_birth(string b)
+	LinkedList<Contact> r=new LinkedList<Contact>();
+	if(contacts.isEmpty())
+		return r;
+	contacts.FindFirst();
+	while(!contacts.List) {
+		if(contacts.retrieve().getBirthday().equals(b)res.insert(contacts.retrieve());
+		contacts.findnext(){
+		contacts.FindFirst();
+		}
+		
+		if(contacts.retrieve().getBirthday().equals(b)res.insert(contacts.retrieve())
+				return r; }
+
 
 }
 
