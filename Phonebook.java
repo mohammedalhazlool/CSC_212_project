@@ -14,10 +14,13 @@ import java.util.Scanner;
 
 public class Phonebook {
 	static LinkedList<Contact>contacts;
+        static LinkedList<Event>Events;
 
+        
 	public Phonebook() {
-
+                Events = new LinkedList<Events>();
 		contacts = new LinkedList<Contact>();
+		
 	}
 
 
