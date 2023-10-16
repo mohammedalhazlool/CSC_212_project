@@ -196,8 +196,16 @@ public LinkedList<Contact> search_address(string a){
 		
 		if(contacts.retrieve().getBirthday().equals(b)res.insert(contacts.retrieve())
 				return r; }
-
-
+public static void print_contacts(Phonebook p1){
+	if(!p1.contacts.isEmpty()){
+	p1.contacts>.FindFirst();
+	while(!p1.contacts.Last()){
+	p1.contacts.retrieve().display_c();
+	p1.contacts.findNext();	
+	}
+        p1.contacts.retrieve().display_c();
+}else
+System.out.println("is empty");
 }
 
 
@@ -227,3 +235,4 @@ public LinkedList<Contact> search_address(string a){
 
 
 
+}
