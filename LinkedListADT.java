@@ -78,21 +78,21 @@ public class LinkedListADT<T>{
 		}
 	}
 	
-	public void delete(T c){ //This method deletes a chosen contact from the list
+	public void delete(){ //This method deletes a chosen contact from the list
 		if(current==head)
-			head = current = head.next;
+			head = head.next;
 		else{
-			Node<T> previous = null;
 			Node<T> tmp = head;
-			while(tmp!=null&&tmp.data!=c){
-				previous = tmp;
+			while(tmp.next!=current)
 				tmp = tmp.next;
-			}
-			if(tmp.data==c){
-				previous.next = tmp.next;
-			}
+			tmp.next = current.next;
 		}
+		if(current.next=null)
+			current = head;
+		else
+			current = current.next;
 	}
+	
 	
 	public boolean search(T c){ //This method searches for a specific contact in the list and returns true if found, false otherwise 
 		Node<T> tmp = head;
