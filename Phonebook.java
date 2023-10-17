@@ -156,9 +156,9 @@ if(all_contacts.empty())
 		return res;
 	}
 public LinkedListADT<Contact> search_email(string e){
-	LinkedListADT<Contact> r = new LinkedListADT<Contact>();
+	LinkedListADT<Contact> res = new LinkedListADT<Contact>();
 	if(contacts.empty())
-		return r;
+		return res;
 	contacts.findFirst();
 	do {
 		if(contacts.retrieve().getEmail().equals(e)){
@@ -166,7 +166,8 @@ public LinkedListADT<Contact> search_email(string e){
 		contacts.findNext();}
 		
 	}while(!contacts.isLast());
-	if(contacts.retrieve().getEmail().equals(e)res.add(contacts.retrieve())
+	if(contacts.retrieve().getEmail().equals(e))
+		res.add(contacts.retrieve();
 	return r;}
 
 public LinkedListADT<Contact> search_address(string a){
