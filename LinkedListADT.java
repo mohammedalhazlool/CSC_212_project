@@ -9,6 +9,8 @@ MMA
 AUTHORS:
 Muhannad Alasmari , 443102430
 ***********************************/
+package project;
+
 class Node <T>{
 	public T data;
 	public Node<T> next;
@@ -41,11 +43,11 @@ class Node <T>{
 	}
 
 }
-public class LinkedListADT<T>{
+ class LinkedList<T>{
 	private Node<T> head;
 	private Node<T> current;
 	
-	public LinkedListADT(){ //Creates a new linked list
+	public LinkedList(){ //Creates a new linked list
 		head = current = null;
 	}
 	
