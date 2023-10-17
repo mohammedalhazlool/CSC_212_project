@@ -168,7 +168,7 @@ public LinkedListADT<Contact> search_email(string e){
 	}while(!contacts.isLast());
 	if(contacts.retrieve().getEmail().equals(e))
 		res.add(contacts.retrieve();
-	return r;}
+	return res;}
 
 public LinkedListADT<Contact> search_address(string a){
 	LinkedListADT<Contact> r=new LinkedListADT<Contact>();
