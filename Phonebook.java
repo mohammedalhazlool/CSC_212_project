@@ -251,7 +251,13 @@ public LinkedListADT<Event> events_in_contact(String c){
 	return new LinkedListADT<Event>();
 	
 }
-
+Public void delete_events_with_contacts(String s, LinkedList<Event>A){
+System.out.print(" ");
+While(!A.isEmpty()){
+String E_title= A.retrieve().getEvent_title();
+delete_event(E_title, s);
+A.remove();  }
+}
 
 
 
