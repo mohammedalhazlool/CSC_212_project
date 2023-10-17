@@ -257,29 +257,29 @@ public LinkedListADT<Event> events_in_contact(String c){
 }
 public void delete_events_with_contacts(String s, LinkedList<Event>A){
 	System.out.print(" ");
-	While(!A.isEmpty()){
+	While(!A.empty()){
 		String E_title= A.retrieve().getEvent_title();
 		delete_event(E_title, s);
-		A.remove();  
+		A.delete();  
 	}
 }
 public void delete_contact(String s) {
-	if(Contacts.isEmpty()) 
+	if(Contacts.empty()) 
 		System.out.println(" list is empty ");
 	Contacts.findFirst();
-		while(!Contacts.last()) {
+		while(!Contacts.isLast()) {
 			if(Contacts.retrieve().getName().equals(s)) {
 				LinkedList<Event>A=getEvents_contact(s);
 				delete_events_with_contacts(s,A);
 				System.out.println(" contact has been removed ");
-				Contacts.remove();  }
+				Contacts.delete();  }
 			Contacts.findNext();
 			}
 		if(Contacts.retrieve().getName().equals(s)) {
 			LinkedList<Event>A=getEvents_contact(s);
 			delete_events_with_contacts(s,A);
 			System.out.println(" contact has been removed ");
-			Contacts.remove();}
+			Contacts.delete();}
 
 	}
 
