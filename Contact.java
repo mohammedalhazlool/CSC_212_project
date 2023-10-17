@@ -22,7 +22,7 @@ private String notes;
 private String email;
 private String address;
 public LinkedList<Event>contact_event=new LinkedList<Event>();	
-public Contact(){ //we don't use this 	
+public Contact(){ 
 }
 	
 public Contact(String name, String number, String birthday, String notes, String email, String address) {
@@ -42,6 +42,9 @@ public Contact(Contact a) {
 	this.birthday=a.birthday;
 	this.notes=a.notes;
 	
+}
+public LinkedList<Event> getContact_event(){
+return contact_event;
 }
 public String getName() {
 	return name;
@@ -83,7 +86,9 @@ public void setAddress(String address) {
 @Override
 public int compareTo(String n) {
 	// TODO Auto-generated method stub
-	return (name.compareTo(n));
+	return name.compareTo(n);
+public int compareTo(Contact c) {
+return name.compareTo(c.name);
 }
 public void read_contact()
 	{
