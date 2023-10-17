@@ -232,10 +232,27 @@ public static void print_List_Events(LinkedList<Event>A){
 }else
 System.out.println("is empty");
 }
-
-
-
-
+public void add_Event(Event e) {
+	Event f = search_event_title(e.getEvent_title());
+	if(f==null) {
+		Events.Add_sorted_Event(e);
+	}
+	
+}
+public LinkedList<Contact> contacts_in_event(String a){
+	Event f = search_event_title(a);
+	if(f!=null) 
+		return f.getcontact__event;
+	return new LinkedList<Contact>();
+	
+}
+public LinkedList<Event> events_in_contact(String c){
+	Contact c = search__by_name(c);
+	if(c!=null) 
+		return c.getevent_contact;
+	return new LinkedList<Event>();
+	
+}
 
 
 
