@@ -246,7 +246,7 @@ else {
 		if (found == null) {
 		}
 	}
-
+//this method makes sure there is no conflict
 	public boolean is_conflict(Event e,Contact c) {
 		LinkedList<Event>contacts_event=c.contact_event;
 		if(contacts_event.empty()) 
@@ -263,7 +263,7 @@ else {
 		else
 			return false;
 			}
-	
+	//this method schedules event
 	public void schedule_event(Event e, String contact_name) {
 		Contact this_contact = search__by_name(contact_name);
 		if(this_contact==null) {
