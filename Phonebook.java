@@ -161,8 +161,8 @@ public LinkedListADT<Contact> search_email(string e){
 		return r;
 	contacts.findFirst();
 	do {
-		if(contacts.retrieve().getEmail().equals(e)res.add(contacts.retrieve()){
-		
+		if(contacts.retrieve().getEmail().equals(e)){
+		res.add(contacts.retrieve());
 		contacts.findNext();}
 		
 	}while(!contacts.isLast());
