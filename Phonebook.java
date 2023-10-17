@@ -266,7 +266,7 @@ public void delete_events_with_contacts(String s, LinkedList<Event>A){
 public void delete_contact(String s) {
 	if(Contacts.isEmpty()) 
 		System.out.println(" list is empty ");
-	Contacts.findFirst(){
+	Contacts.findFirst();
 		while(!Contacts.last()) {
 			if(Contacts.retrieve().getName().equals(s)) {
 				LinkedList<Event>A=getEvents_contact(s);
