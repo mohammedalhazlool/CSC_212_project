@@ -107,7 +107,7 @@ public String toString() {
 	return "Contact [name=" + name + ", number=" + number + ", birthday=" + birthday + ", notes=" + notes + ", email="
 			+ email + ", address=" + address + "]";
 }
-public void display_c() {
+public void display_contact() {
 System.out.println("name: "+name);	
 System.out.println("email: "+email);
 System.out.println("number: "+number);
