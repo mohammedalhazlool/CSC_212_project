@@ -22,7 +22,7 @@ private String notes;
 private String email;
 private String address;
 public LinkedList<Event>contact_event=new LinkedList<Event>();	
-publi Contact(){
+public Contact(){ //we don't use this 	
 }
 	
 public Contact(String name, String number, String birthday, String notes, String email, String address) {
