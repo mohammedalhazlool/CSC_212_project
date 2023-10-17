@@ -1,3 +1,14 @@
+/***********************************
+CLASS: Phonebook.java
+CSC212 Data structures - Project phase I
+Fall 2023
+EDIT DATE:
+14-10-2023
+TEAM:
+MMA
+AUTHORS:
+Muhammed Alhithlool, 443101218, Abdullah Alsalman, 443105689
+***********************************/
 package project;
 
 import java.util.Scanner;
