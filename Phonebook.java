@@ -197,14 +197,15 @@ public LinkedListADT<Contact> search_address(string a){
 				return r; }
 public static void print_contacts(Phonebook p1){
 	if(!p1.contacts.empty()){
-	p1.contacts>.findFirst();
-	while(!p1.contacts.isLast()){
-	p1.contacts.retrieve().display_contact();
-	p1.contacts.findNext();	
+		p1.contacts.findFirst();
+		while(!p1.contacts.isLast()){
+			p1.contacts.retrieve().display_contact();
+			p1.contacts.findNext();	
+		}
+       		p1.contacts.retrieve().display_contact();
 	}
-        p1.contacts.retrieve().display_contact();
-}else
-System.out.println("is empty");
+	else
+		System.out.println("is empty");
 }
 public static void print_contacts_byname(LinkedListADT<Contact>A){
 	if(!A.empty()){
