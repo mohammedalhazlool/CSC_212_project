@@ -123,21 +123,21 @@ if(all_contacts.empty())
 	return null;
 }
 
-	public LinkedList<Contact> search__by_Phone(String ph) {
-		LinkedList<Contact> res = new LinkedList<Contact>();
+	public Contact search__by_Phone(String ph) {
+		
 		if (all_contacts.empty())
-			return res;
+			return null;
 		all_contacts.findFirst();
 		while (!all_contacts.isLast()) {
 			if (all_contacts.retrieve().getNumber().equals(ph))
-				res.add(all_contacts.retrieve());
+		return all_contacts.retrieve();
 			all_contacts.findNext();
 		}
 		if (all_contacts.retrieve().getNumber().equals(ph))
-			res.add(all_contacts.retrieve());
-		return res;
+		return all_contacts.retrieve();
+		
+		return null;
 	}
-
 public LinkedList<Contact> search_email(String e){
 	LinkedList<Contact> res=new LinkedList<Contact>();
 	if(all_contacts.empty())
