@@ -126,7 +126,7 @@ public void delete_contact(String n) {
 		if(First_name.equals(n))
 			res.add(all_contacts.retrieve());
 		return res;
-
+}
 public Contact search__by_name(String n) {
 if(all_contacts.empty()) 
 	return null;
