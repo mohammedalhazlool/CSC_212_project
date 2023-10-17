@@ -26,7 +26,7 @@ public void Add_Sorted_User(Contact d) {
 }
 else {
 	all_contacts.findFirst();
-	if(d.compareTo.retrieve().getContact_name()<0){//1
+	if(d.compareTo.retrieve().getName()<0){//1
 		Contact c = new Contact(all_contacts.retrieve());
 		all_contacts.update(d);
 		all_contacts.add(c);
