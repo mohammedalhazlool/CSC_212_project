@@ -92,7 +92,7 @@ public class LinkedListADT<T>{
 	public void addInOrder(T c){ //This method adds a new contact to the list by the order of names alphabetically 
 		if(empty())
 			current = head = new Node<T>(c);
-		if(!search(c)){
+		else{
 			Node<T> n = new Node<T>(c);
 			if(((Contact)c).compareTo(((Contact)head.data).getName())<0){
 					n.next = head;
