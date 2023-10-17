@@ -416,7 +416,9 @@ public static void main(String[]args) {
 		ch=read.nextInt();
 		switch(ch) {
 		case 1:
-			ph1.add_contact(read.nextLine());
+			Contact c = new Contact();
+			c.read_contact
+			ph1.add_contact(c);
 			break;
 			
 		case 2:
