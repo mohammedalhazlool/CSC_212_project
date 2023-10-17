@@ -258,6 +258,25 @@ String E_title= A.retrieve().getEvent_title();
 delete_event(E_title, s);
 A.remove();  }
 }
+public void delete_contact(String s) {
+	if(Contacts.isEmpty()) 
+		System.out.println(" list is empty ");
+	Contacts.findFirst(){
+		while(!Contacts.last()) {
+			if(Contacts.retrieve().getname().equals(s)) {
+				LinkedList<Event>A=getEvents_contact(s);
+				delete_events_with_contacts(s,A);
+				System.out.println(" contact has been removed ");
+				Contacts.remove();  }
+			Contacts.findNext();
+			}
+		if(Contacts.retrieve().getname().equals(s)) {
+			LinkedList<Event>A=getEvents_contact(s);
+			delete_events_with_contacts(s,A);
+			System.out.println(" contact has been removed ");
+			Contacts.remove();}
+
+	}
 
 
 
