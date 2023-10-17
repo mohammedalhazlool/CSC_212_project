@@ -284,10 +284,10 @@ public void delete_contact(String s) {
 	}
 
 public Event search_event_title(String s) {
-	if(Events.isEmpty())
+	if(Events.empty())
 		return null;
-	Events.FindFirst();
-	while(!Events.last()) {
+	Events.findFirst();
+	while(!Events.isLast()) {
 		if(Events.retrieve().getEvent_title().equals(s))
 			return Events.retrieve();
 		Events.findFirst();
