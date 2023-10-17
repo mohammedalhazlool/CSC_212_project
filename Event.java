@@ -17,7 +17,7 @@ private String Event_Location;
 private String Event_name;
 private String Event_date;
 private String Event_time;	
-public LinkedList<Contact>contact__event=new LinkedList<Contact>();
+public LinkedListADT<Contact>contact__event=new LinkedListADT<Contact>();
 
 public Event(){
 }
@@ -76,7 +76,7 @@ public String toString() {
 			+ ", Event_date=" + Event_date + ", Event_time=" + Event_time + "]";
 }
 
-public LinkedList<Contact> contact__event() {
+public LinkedListADT<Contact> contact__event() {
 	return contact__event;
 }
 
