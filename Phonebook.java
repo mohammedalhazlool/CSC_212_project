@@ -222,16 +222,17 @@ public static void print_contacts_byname(LinkedListADT<Contact>A){
 
 public static void print_List_Events(LinkedListADT<Event>A){
 	if(!A.empty()){
-	A.findFirst();
-	while(!A.isLast()){
-	System.out.println(A.retrieve()+" linked with contacts: ");
-	print_contacts_byname(A.retrieve().contact_event);
-	A.findNext();	
+		A.findFirst();
+		while(!A.isLast()){
+			System.out.println(A.retrieve()+" linked with contacts: ");
+			print_contacts_byname(A.retrieve().contact_event);
+			A.findNext();	
+		}
+		System.out.println(A.retrieve()+" linked with contacts: ");
+		print_contacts_byname(A.retrieve().contact_event);
 	}
-	System.out.println(A.retrieve()+" linked with contacts: ");
-	print_contacts_byname(A.retrieve().contact_event);
-}else
-System.out.println("is empty");
+	else
+		System.out.println("is empty");
 }
 public void add_Event(Event e) {
 	Event f = search_event_title(e.getEvent_title());
