@@ -3,7 +3,7 @@ CLASS: Event.java
 CSC212 Data structures - Project phase I
 Fall 2023
 EDIT DATE:
-13-10-2023
+14-10-2023
 TEAM:
 MMA
 AUTHORS:
