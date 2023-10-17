@@ -209,14 +209,15 @@ public static void print_contacts(Phonebook p1){
 }
 public static void print_contacts_byname(LinkedListADT<Contact>A){
 	if(!A.empty()){
-	A.findFirst();
-	while(!A.isLast()){
-	System.out.println(A.retrieve().get_Name());
-	A.findNext();	
+		A.findFirst();
+		while(!A.isLast()){
+			System.out.println(A.retrieve().get_Name());
+			A.findNext();	
+		}
+		System.out.println(A.retrieve().get_Name());
 	}
-	System.out.println(A.retrieve().get_Name());
-}else
-System.out.println("is empty");
+	else
+	System.out.println("is empty");
 }
 
 public static void print_List_Events(LinkedListADT<Event>A){
