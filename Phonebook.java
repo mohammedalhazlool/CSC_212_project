@@ -9,11 +9,12 @@ MMA
 AUTHORS:
 Muhammed Alhithlool, 443101218, Abdullah Alsalman, 443105689
 ***********************************/
+
 package project;
 
 import java.util.Scanner;
 
-public class Phonebook {
+  public class Phonebook {
 	static LinkedList<Contact> all_contacts;
 	static LinkedList<Event> all_events;
 
@@ -30,14 +31,14 @@ public class Phonebook {
 	
 //this method add us in order
 	
-public void Add_Sorted_User(Contact d) {
+  public void Add_Sorted_User(Contact d) {
 	
 	if (all_contacts.empty()) {
 		
 	all_contacts.add(d);
 	return;
 }
-else {
+   else {
 	all_contacts.findFirst();
 	if(d.compareTo(all_contacts.retrieve().getName())<0){//1
 		Contact c = new Contact(all_contacts.retrieve());
@@ -257,7 +258,7 @@ else {
 		if (found == null) {
 		}
 	}
-//this method makes sure there is no conflict
+
 	public boolean is_conflict(Event e,Contact c) {
 		LinkedList<Event>contacts_event=c.contact_event;
 		if(contacts_event.empty()) 
@@ -274,7 +275,7 @@ else {
 		else
 			return false;
 			}
-	//this method schedules event
+	
 	public void schedule_event(Event e, String contact_name) {
 		Contact this_contact = search__by_name(contact_name);
 		if(this_contact==null) {
@@ -553,24 +554,4 @@ public static void main(String[]args) {
 	}
 	while(ch!=8);
 	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}		
