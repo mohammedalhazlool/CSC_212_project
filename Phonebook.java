@@ -26,7 +26,7 @@ public void Add_Sorted_User(Contact d) {
 }
 else {
 	all_contacts.findFirst();
-	if(d.compareTo.retrieve().getName()<0){//1
+	if(d.compareTo(all_contacts.retrieve().getName())<0){//1
 		Contact c = new Contact(all_contacts.retrieve());
 		all_contacts.update(d);
 		all_contacts.add(c);
@@ -47,34 +47,22 @@ else {
 	else {
 		
 		d.display_contact();
-		Contacts.insert(d);//2
+		all_contacts.add(d);//2
 		
 		}
 }
 }
 
-public static void print_Linked_List_Events(LinkedList<Event>A){
-	if(!A.empty()){
-		A.findFirst();
-		while(!A.isLast()){
-			System.out.println(A.retrieve()+" linked with contacts: ");
-			print_contacts_byname(A.retrieve().contact_event);
-			A.findNext();	
-		}
-		System.out.println(A.retrieve()+" linked with contacts: ");
-		print_contacts_byname(A.retrieve().contact_event);
-	}
-	else
-		System.out.println("is empty");
-}
-public void add_Event(Event e) {
+
+
+/**public void add_Event(Event e) {
 	Event f = search_event_title(e.getEvent_title());
 	if(f==null) {
-		Events.Add_sorted_Event(e);
+		Event.Add_sorted_User(e);
 	}
 	
 }
-
+**/
 	public boolean search(Contact c) {
 		if (all_contacts.empty())
 			return false;
@@ -95,7 +83,7 @@ public void add_Event(Event e) {
 	public void add_contact(Contact c) {
 		boolean found = search(c);
 		if (!found) {
-			all_contacts.Add_sorted1(c);//3
+			all_contacts.addInOrder(c);//3
 
 		}
 
@@ -106,19 +94,18 @@ public void add_Event(Event e) {
 		if(all_contacts.empty())
 			return res;
 		all_contacts.findFirst();
-		while(!all_contacts.retrieve()){
-			
+		while(!all_contacts.isLast()){
 	String cur_Full_Name=all_contacts.retrieve().getName();
 	String First_name=cur_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
 	if(First_name.equals(n))
-		res.insert(all_contacts.retrieve());
+		res.add(all_contacts.retrieve());
 	
 	all_contacts.findNext();
 }
 		String cur_Full_Name=all_contacts.retrieve().getName();
 		String First_name=cur_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
 		if(First_name.equals(n))
-			res.insert(all_contacts.retrieve());
+			res.add(all_contacts.retrieve());
 		return res;
 	}//all contacts , all events
 	
@@ -127,14 +114,14 @@ if(all_contacts.empty())
 	return null;
 	all_contacts.findFirst();
 	while(!all_contacts.isLast()) {
-		if(all_contacts.retrieve(getName().equals(n))
-			return all_contacts.retrieve();
+		if(!all_contacts.retrieve().getName().equals(n))
+		return all_contacts.retrieve();
 		all_contacts.findNext();
 	}
-	if(all_contacts.retrieve(getName().equals(n))//
+	if(all_contacts.retrieve().getName().equals(n))
 			return all_contacts.retrieve();
 	return null;
-}//all contacts , all events
+}
 
 	public LinkedList<Contact> search__by_Phone(String ph) {
 		LinkedList<Contact> res = new LinkedList<Contact>();
@@ -157,14 +144,16 @@ public LinkedList<Contact> search_email(String e){
 		return res;
 	all_contacts.findFirst();
 	do {
-		if(all_contacts.retrieve().getEmail().equals(e).res.insert(all_contacts.retrieve()){
+		if(all_contacts.retrieve().getEmail().equals(e)){
+			res.add(all_contacts.retrieve());
 		all_contacts.findNext();
-		}
-		
-	}while(!all_contacts.isLast());
-	if(all_contacts.retrieve().getEmail().equals(e).res.insert(all_contacts.retrieve())
+		}	
+	}
+	while(!all_contacts.isLast());
+	if(all_contacts.retrieve().getEmail().equals(e))
+		res.add(all_contacts.retrieve());
 	return res;
-	}//4
+	}
 
 
 public LinkedList<Contact> search_address(String a){
@@ -172,28 +161,30 @@ public LinkedList<Contact> search_address(String a){
 	if(all_contacts.empty())
 		return res;
 	all_contacts.findFirst();
-	while(!all_contacts.List) {
-		if(all_contacts.retrieve().getAddress().equals(a)res.insert(all_contacts.retrieve());
+	while(!all_contacts.isLast()) {
+		if(all_contacts.retrieve().getAddress().equals(a));
+		res.add(all_contacts.retrieve());
 		all_contacts.findNext();
-		all_contacts.findFirst();	
-		}//method list, insert
-
-	if(all_contacts.retrieve().getAddress().equals(a)res.insert(all_contacts.retrieve())
-			return res;
 	}
-
+	if(all_contacts.retrieve().getAddress().equals(a));
+	res.add(all_contacts.retrieve());
+	return res;	
+		}//method list, insert
+	
+//
 	public LinkedList<Contact> search_birth(String b){
 	LinkedList<Contact> res=new LinkedList<Contact>();
 	if(all_contacts.empty())
 		return res;
 	all_contacts.findFirst();
-	while(!all_contacts.List) {
-		if(all_contacts.retrieve().getBirthday().equals(b)res.insert(all_contacts.retrieve()){
+	while(!all_contacts.isLast()) {
+		if(all_contacts.retrieve().getBirthday().equals(b))
+		res.add(all_contacts.retrieve());
+		
 		all_contacts.findNext();
-		all_contacts.findFirst();
-		}
-	
-	if(all_contacts.retrieve().getBirthday().equals(b)res.insert(all_contacts.retrieve())
+	}
+	if(all_contacts.retrieve().getBirthday().equals(b))
+		res.add(all_contacts.retrieve());
 			return res;
 
 	}
@@ -234,24 +225,32 @@ public static void print_List_Events(LinkedList<Event>A){
 	print_contacts_by_name(A.retrieve().contact__event);
 }else
 System.out.println("is empty");
-}
-	
+}	
+
+public void add_Event(Event e) {
+	Event found = search_event_title(e.getEvent_title());
+	if(found==null) {
+	}
+}	
 	public boolean is_conflict(Event e,Contact c) {
-		if(contacts_event.empty()) {//class contact events
+		LinkedList<Event>contacts_event=c.contact_event;
+		if(contacts_event.empty()) 
 			return false;
-		}
+		
 		contacts_event.findFirst();
-		while(!contacts_event.last()) {
+		while(!contacts_event.isLast()) {
 			if(e.getEvent_date().equals(contacts_event.retrieve().getEvent_date())&&e.getEvent_time().equals(contacts_event.retrieve().getEvent_time()))
 				return true;
 			contacts_event.findNext();
 		}
-		if(e.getEvent_date().equals(contacts_event.retrieve().getEvent_date())&&e.getEvent_time().equals(contact_events.retrieve().getEvent_time()))
+		if(e.getEvent_date().equals(contacts_event.retrieve().getEvent_date())&&e.getEvent_time().equals(contacts_event.retrieve().getEvent_time()))
 			return true;
 		else
 			return false;
 			}
-	public void schedule_event(Event e String contact_name) {
+	
+	public void schedule_event(Event e, String contact_name) {
+		Contact this_contact = search__by_name(contact_name);
 		if(this_contact==null) {
 			System.out.println("can not schedule this event because this contact does not exist"+contact_name);
 			return;
@@ -259,52 +258,50 @@ System.out.println("is empty");
 	
 		boolean is_conflict=is_conflict(e,this_contact);
 		if(this_contact!=null&&!is_conflict) {
-			System.out.println("schedlulling contact"+this_contact.getContact_name()+"'"+1.getEvent_title());
+			System.out.println("schedlulling contact"+this_contact.getName()+"'"+e.getEvent_title());
 			
-			this_contact.contact_events.Add_Sorted_Events(e);
-			e.contacts_with_events.Add_Sorted1(this_contact);
-			add_Event(e);
+			this_contact.contact_event.add(e);//
+			e.contact__event.add(this_contact);
+			add_Event(e);//add
 			
-			this_contact.Events_in_contact=e;
-			this_contact.Evnets_in_contact.events_in_event.Add_Sorted_Event(e);
+			this_contact.event_in_contact=e;
+			this_contact.event_in_contact.contact__event.add(this_contact);//e in e
 		}
 	}
-	}
+	
 	
 	public void delete_contact(String s) {
 		if(all_contacts.empty()) 
 			System.out.println(" list is empty ");
 		all_contacts.findFirst();
-			while(!all_contacts.last()) {//last
+			while(!all_contacts.isLast()) {//last
 				if(all_contacts.retrieve().getName().equals(s)) {
-					LinkedList<Event> A=getEvents_contact(s);
+					LinkedList<Event> A=getEvent_contact(s);
 					delete_events_with_contacts(s,A);
 					System.out.println(" contact has been removed ");
-					all_contacts.remove();  }
+					all_contacts.delete();  }
 				all_contacts.findNext();
 				}
 			if(all_contacts.retrieve().getName().equals(s)) {
-				LinkedList<Event>A=getEvents_contact(s);
+				LinkedList<Event>A=getEvent_contact(s);
 				delete_events_with_contacts(s,A);
 				System.out.println(" contact has been removed ");
-				all_contacts.remove();}
-
-		}
+				all_contacts.delete();}
 	}
+		
+	
 
 public static void menu() {
 	System.out.println("Welcome to the Lonked Tree Phonebook!");
 	System.out.println("Please chose an option");
-	System.out.println("1. Adda contact");
+	System.out.println("1. Add a contact");
 	System.out.println("2. Search for a contact");
 	System.out.println("3. Delete a contact");
 	System.out.println("4. schedule an event");
 	System.out.println("5. Print event details");
-	System.out.println("6. Print event details");
+	System.out.println("6. Print contacts by first name");
 	System.out.println("7. Print all events alphabetically");
-	System.out.println("8. Print all events for some contact");
-	System.out.println("9. print all contacts for some event");
-	System.out.println("12. Exit");
+	System.out.println("8. Exit");
 	System.out.println("\nEnter your choice: ");
 }
 
@@ -327,7 +324,7 @@ public void delete_events_with_contacts(String s, LinkedList<Event>A){
 	System.out.print(" ");
 	while(!A.empty()){
 		String E_title= A.retrieve().getEvent_title();
-		delete_event(E_title, s);
+		delete_event(E_title, s);//delete
 		A.delete();  
 	}
 }
@@ -384,40 +381,42 @@ public Event search_event_title(String s) {
 public LinkedList<Event> getEvent_contact(String n){
 	Contact this_contact = search__by_name(n);
 	if(this_contact!= null)
-		return this_contact.getContact_event();
+		return this_contact.getContact_event();//
 	return new LinkedList<Event>();
 }
 public LinkedList<Contact> getContact_event(String n){
 	Event this_event = search_event_title(n);
 	if(this_event!= null)
-		return this_event.getEvent_contact();//getEvent_contact
+		return this_event.contact__event();//
 	return new LinkedList<Contact>();
 }
+
 public void delete_event(String tit, String n){ 
-	LinkedList<Contact>contacts_with_cur_event=getContacts_in_Event(tit);
+	LinkedList<Contact>contacts_with_cur_event=getContact_event(tit);
 	print_contacts_by_name(contacts_with_cur_event);
-	contacts_with_cur_event.findfirst();
-	while(!contacts_with_cur_event.isEmpty&&!contacts_with_cur_event.last){
-		if(contacts_with_cur_event.retrieve().getName().equals(n){
-			contacts_with_cur_event.remove();
+	contacts_with_cur_event.findFirst();
+	while(!contacts_with_cur_event.empty()&&!contacts_with_cur_event.isLast()){
+		if(contacts_with_cur_event.retrieve().getName().equals(n)){
+			contacts_with_cur_event.delete();
 			break;
 		}
 		contacts_with_cur_event.findNext();
 	}
-	if(contacts_with_cur_event.retrieve().getName().equals(n){
-		contacts_with_cur_event.remove();
+	if(contacts_with_cur_event.retrieve().getName().equals(n)){
+		contacts_with_cur_event.delete();;
 	}
 }
+
 public static void main(String[]args) {
 	Phonebook ph1 = new Phonebook();
 	Scanner read = new Scanner(System.in);
 	int ch =-1,search_option=-1;
-	
 	do {
 		menu();
 		ch=read.nextInt();
+		switch(ch) {
 		case 1:
-			test_Add(ph1);//al7l
+			ph1.add_contact(read.nextLine());
 			break;
 			
 		case 2:
@@ -479,7 +478,7 @@ public static void main(String[]args) {
 			break;
 			
 		case 4:
-			//test_schedule_Event6_(ph1);
+			ph1.schedule_event(read.nextLine());
 			break;
 			
 		case 5:
@@ -508,8 +507,8 @@ public static void main(String[]args) {
 			
 		case 6:
 			
-			print_contacts(ph1);
-			//print by all contacts 
+			print_contacts(all_contacts);
+
 			break;
 			
 		case 7:
@@ -517,30 +516,16 @@ public static void main(String[]args) {
 			break;
 			
 		case 8:
-			read.nextLine();
-			System.out.println("Enter contact name: ");
-			LinkedList<Event>L1=ph1.getEvent_contact(read.nextLine());
-			ph1.Linked_List_of_Events(L1);
-			break;
-			
-		case 9:
-			read.nextLine();
-			System.out.println("Enter contact name: ");
-			LinkedList<Contact>L2=ph1.getContact_event(read.nextLine());
-			print_Linked_List_of_all_contacts(L2);
-			break;
-			
-		case 12:
 			System.out.println("\nGoodBye!");
 			break;
 }
 
-}
+while(ch!=8);
+	}
 
 }
 
-
-
+}
 
 
 
