@@ -1,5 +1,5 @@
 /***********************************
-CLASS: LinkedListADT.java
+CLASS: Node.java
 CSC212 Data structures - Project phase I
 Fall 2023
 EDIT DATE:
