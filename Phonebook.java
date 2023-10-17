@@ -89,8 +89,8 @@ else {
 
 	}
 
-	public LinkedList<Contact> search__by_First_name(String n){
-		LinkedList<Contact>res = new LinkedList<Contact>();
+	public LinkedListADT<Contact> search__by_First_name(String n){
+		LinkedListADT<Contact>res = new LinkedListADT<Contact>();
 		if(all_contacts.empty())
 			return res;
 		all_contacts.findFirst();
