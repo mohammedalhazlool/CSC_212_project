@@ -276,7 +276,7 @@ public void delete_contact(String s) {
 			Contacts.findNext();
 			}
 		if(Contacts.retrieve().getName().equals(s)) {
-			LinkedList<Event>A=getEvents_contact(s);
+			LinkedListADT<Event>A=getEvents_contact(s);
 			delete_events_with_contacts(s,A);
 			System.out.println(" contact has been removed ");
 			Contacts.delete();}
