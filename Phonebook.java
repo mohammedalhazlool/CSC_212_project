@@ -394,19 +394,19 @@ public LinkedList<Contact> getContact_event(String n){
 	return new LinkedList<Contact>();
 }
 public void delete_event(String tit, String n){ 
-LinkedList<Contact>contacts_with_cur_event=getContacts_in_Event(tit);
-print_contacts_by_name(contacts_with_cur_event);
-contacts_with_cur_event.findfirst();
-while(!contacts_with_cur_event.isEmpty&&!contacts_with_cur_event.last){
-if(contacts_with_cur_event.retrieve().getName().equals(n){
-contacts_with_cur_event.remove();
-break;
-}
-contacts_with_cur_event.findNext();
-}
-if(contacts_with_cur_event.retrieve().getName().equals(n){
-contacts_with_cur_event.remove();
-}
+	LinkedList<Contact>contacts_with_cur_event=getContacts_in_Event(tit);
+	print_contacts_by_name(contacts_with_cur_event);
+	contacts_with_cur_event.findfirst();
+	while(!contacts_with_cur_event.isEmpty&&!contacts_with_cur_event.last){
+		if(contacts_with_cur_event.retrieve().getName().equals(n){
+			contacts_with_cur_event.remove();
+			break;
+		}
+		contacts_with_cur_event.findNext();
+	}
+	if(contacts_with_cur_event.retrieve().getName().equals(n){
+		contacts_with_cur_event.remove();
+	}
 }
 public static void main(String[]args) {
 	Phonebook ph1 = new Phonebook();
