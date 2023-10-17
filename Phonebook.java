@@ -47,7 +47,7 @@ else {
 	else {
 		
 		d.display_contact();
-		all_contacts.insert(d);//2
+		Contacts.insert(d);//2
 		
 		}
 }
