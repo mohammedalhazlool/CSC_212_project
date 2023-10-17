@@ -13,18 +13,18 @@ Abdullah Alsalman 443105689 , Mohammed Alhithlool 443101218
 import java.util.Scanner;
 
 public class Phonebook {
-	static LinkedList<Contact>contacts;
-        static LinkedList<Event>Events;
+	static LinkedListADT<Contact>contacts;
+        static LinkedListADT<Event>Events;
 
         
 	public Phonebook() {
-                Events = new LinkedList<Events>();
-		contacts = new LinkedList<Contact>();
+                Events = new LinkedListADT<Events>();
+		contacts = new LinkedListADT<Contact>();
 		
 	}
 
 
-	public Phonebook(LinkedList<Contact> contacts) {
+	public Phonebook(LinkedListADT<Contact> contacts) {
 		this.contacts = contacts;
 
 	}
@@ -59,7 +59,7 @@ else {
 	else {
 		
 		d.display_contact();
-		contacts.insert(d);
+		contacts.add(d);
 		
 		}
 }
@@ -75,7 +75,7 @@ else {
 			if (contacts.retrieve().getName().equals(c.getName())
 					|| contacts.retrieve().getNumber().equals(c.getNumber()))
 				return true;
-			contacts.FindNext();
+			contacts.findNext();
 		}
 		if (contacts.retrieve.getContact_name().equals(c.getContact_name())
 				|| contacts.retrieve().getPhone_num().equals(c.getPhone_num()))
@@ -87,53 +87,51 @@ else {
 	public void add_contact(Contacts c) {
 		boolean found = search(c);
 		if (!found) {
-			contacts.Add_sorted1(c);
+			contacts.addInOrder(c);
 
 		}
 
 	}
 
-public void delete
-
-	contact(String n) {
-	if (contacts.isEmpty()) {
+public void delete_contact(String n) {
+	if (contacts.empty()) {
 		System.out.print("empty List can not delete");
 		return;
 	}
 	contacts.findFirst();
 	while(!contacts.isLast()) {
 		if(contacts.retrieve.getContact_name().equals(n)) {
-			contact.remove();
+			contact.delete();
 			System.out.println(n+"contact deleted");
 		}
 		else System.out.println("can not be deleted because it does not exist");
 	}
 
-	public LinkedList<Contact> search__by_First_name(String n){
-		LinkedList<Contact>res = new LinkedList<Contact>();
-		if(all_contact.isEmpty())
+	public LinkedListADT<Contact> search__by_First_name(String n){
+		LinkedListADT<Contact>res = new LinkedListADT<Contact>();
+		if(all_contact.empty())
 			return res;
-		all_contacts.FindFirst();
+		all_contacts.findFirst();
 		while(!all_contacts.retrieve()){
 			
 	String cur_Full_Name=all_contacts.retrieve().getContact_name();
 	String First_name=curr_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
 	if(First_name.equals(n))
-		res.insert(all_contacts.retrieve());
+		res.add(all_contacts.retrieve());
 	
 	all_contacts.findNext();
 }
 		String cur_Full_Name=all_contacts.retrieve().getContact_name();
 		String First_name=curr_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
 		if(First_name.equals(n))
-			res.insert(all_contacts.retrieve());
+			res.add(all_contacts.retrieve());
 		return res;
 
 public Contact search__by_name(String n) {
-if(all_contacts.isEmpty()) 
+if(all_contacts.empty()) 
 	return null;
-	all_contacts.FindFirst();
-	while(!all_contacts.last()) {
+	all_contacts.findFirst();
+	while(!all_contacts.isLast()) {
 		if(all_contacts.retrieve(getContact_name().equals(n))
 			return all_contacts.retrieve();
 		all_contacts_findNext();
@@ -144,7 +142,7 @@ if(all_contacts.isEmpty())
 }
 
 	public Contact search__by_Phone(String ph) {
-		LinkedList<Contact> res = new LinkedList<Contact>();
+		LinkedListADT<Contact> res = new LinkedListADT<Contact>();
 		if (contacts.empty())
 			return res;
 		contacts.findFirst();
@@ -157,60 +155,60 @@ if(all_contacts.isEmpty())
 			res.add(contacts.retrieve());
 		return res;
 	}
-public LinkedList<Contact> search_email(string e){
-	LinkedList<Contact> r=new LinkedList<Contact>();
-	if(contacts.isEmpty())
+public LinkedListADT<Contact> search_email(string e){
+	LinkedListADT<Contact> r = new LinkedListADT<Contact>();
+	if(contacts.empty())
 		return r;
-	contacts.FindFirst();
+	contacts.findFirst();
 	do {
-		if(contacts.retrieve().getEmail().equals(e)res.insert(contacts.retrieve()){
+		if(contacts.retrieve().getEmail().equals(e)res.add(contacts.retrieve()){
 		
-		contacts.findnext();}
+		contacts.findNext();}
 		
-	}while(!contactsLast);
-	if(contacts.retrieve().getEmail().equals(e)res.insert(contacts.retrieve())
+	}while(!contacts.isLast());
+	if(contacts.retrieve().getEmail().equals(e)res.add(contacts.retrieve())
 	return r;}
 
-public LinkedList<Contact> search_address(string a){
-	LinkedList<Contact> r=new LinkedList<Contact>();
-	if(contacts.isEmpty())
+public LinkedListADT<Contact> search_address(string a){
+	LinkedListADT<Contact> r=new LinkedListADT<Contact>();
+	if(contacts.empty())
 		return r;
-	contacts.FindFirst();
-	while(!contacts.List) {
-		if(contacts.retrieve().getAddress().equals(a)res.insert(contacts.retrieve());
-		contacts.findnext(){
-		contacts.FindFirst();	}
+	contacts.findFirst();
+	while(!contacts.isLast()) {
+		if(contacts.retrieve().getAddress().equals(a)res.add(contacts.retrieve());
+		contacts.findNext(){
+		contacts.findFirst();	}
 		
-		if(contacts.retrieve().getAddress().equals(a)res.insert(contacts.retrieve())
+		if(contacts.retrieve().getAddress().equals(a)res.add(contacts.retrieve())
 				return r;}
-	public LinkedList<Contact> search_birth(string b)
-	LinkedList<Contact> r=new LinkedList<Contact>();
-	if(contacts.isEmpty())
+	public LinkedListADT<Contact> search_birth(string b)
+	LinkedListADT<Contact> r=new LinkedListADT<Contact>();
+	if(contacts.empty())
 		return r;
-	contacts.FindFirst();
+	contacts.findFirst();
 	while(!contacts.List) {
-		if(contacts.retrieve().getBirthday().equals(b)res.insert(contacts.retrieve());
+		if(contacts.retrieve().getBirthday().equals(b)res.add(contacts.retrieve());
 		contacts.findnext(){
-		contacts.FindFirst();
+		contacts.findFirst();
 		}
 		
-		if(contacts.retrieve().getBirthday().equals(b)res.insert(contacts.retrieve())
+		if(contacts.retrieve().getBirthday().equals(b)res.add(contacts.retrieve())
 				return r; }
 public static void print_contacts(Phonebook p1){
-	if(!p1.contacts.isEmpty()){
-	p1.contacts>.FindFirst();
-	while(!p1.contacts.Last()){
-	p1.contacts.retrieve().display_c();
+	if(!p1.contacts.empty()){
+	p1.contacts>.findFirst();
+	while(!p1.contacts.isLast()){
+	p1.contacts.retrieve().display_contact();
 	p1.contacts.findNext();	
 	}
-        p1.contacts.retrieve().display_c();
+        p1.contacts.retrieve().display_contact();
 }else
 System.out.println("is empty");
 }
-public static void print_contacts_byname(LinkedList<Contact>A){
-	if(!A.isEmpty()){
-	A.FindFirst();
-	while(!A.Last()){
+public static void print_contacts_byname(LinkedListADT<Contact>A){
+	if(!A.empty()){
+	A.findFirst();
+	while(!A.isLast()){
 	System.out.println(A.retrieve().get_Name());
 	A.findNext();	
 	}
@@ -219,10 +217,10 @@ public static void print_contacts_byname(LinkedList<Contact>A){
 System.out.println("is empty");
 }
 
-public static void print_List_Events(LinkedList<Event>A){
-	if(!A..isEmpty()){
-	A.FindFirst();
-	while(!A.Last()){
+public static void print_List_Events(LinkedListADT<Event>A){
+	if(!A.empty()){
+	A.findFirst();
+	while(!A.isLast()){
 	System.out.println(A.retrieve()+" linked with contacts: ");
 	print_contacts_byname(A.retrieve().contact_event);
 	A.findNext();	
@@ -239,18 +237,18 @@ public void add_Event(Event e) {
 	}
 	
 }
-public LinkedList<Contact> contacts_in_event(String a){
+public LinkedListADT<Contact> contacts_in_event(String a){
 	Event f = search_event_title(a);
 	if(f!=null) 
 		return f.getcontact__event;
-	return new LinkedList<Contact>();
+	return new LinkedListADT<Contact>();
 	
 }
-public LinkedList<Event> events_in_contact(String c){
+public LinkedListADT<Event> events_in_contact(String c){
 	Contact c = search__by_name(c);
 	if(c!=null) 
 		return c.getevent_contact;
-	return new LinkedList<Event>();
+	return new LinkedListADT<Event>();
 	
 }
 
