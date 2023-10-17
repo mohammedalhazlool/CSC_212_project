@@ -113,6 +113,7 @@ System.out.println("email: "+email);
 System.out.println("number: "+number);
 System.out.println("address: "+address);
 System.out.println("birthday: "+birthday);
+System.out.println("notes: "+notes);
 }
 
 
