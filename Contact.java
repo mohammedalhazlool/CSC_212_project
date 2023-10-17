@@ -21,6 +21,7 @@ private String birthday;
 private String notes;
 private String email;
 private String address;
+public Event event_in_contact;	
 public LinkedList<Event>contact_event=new LinkedList<Event>();	
 public Contact(){ 
 }
