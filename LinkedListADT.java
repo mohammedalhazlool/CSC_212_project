@@ -142,9 +142,9 @@ class Node <T>{
 		return false;
 	}
 	public void display(){ //This method displays the data of all the linked list elements
-		Node tmp;
+		Node<T> tmp = head;
 		while(tmp!=null){
-			System.out.print(tmp.data+"->");
+			System.out.print(((Contact)tmp.data).getName()+"->");
 			tmp = tmp.next;
 		}
 	}
