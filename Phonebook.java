@@ -9,36 +9,35 @@ MMA
 AUTHORS:
 Muhammed Alhithlool, 443101218, Abdullah Alsalman, 443105689
 ***********************************/
-
-package project;
+package project; 
 
 import java.util.Scanner;
 
-  public class Phonebook {
-	static LinkedList<Contact> all_contacts;
-	static LinkedList<Event> all_events;
+public class Phonebook {
+	static LinkedListADT<Contact> all_contacts;
+	static LinkedListADT<Event> all_events;
 
 	public Phonebook() {
-		all_events = new LinkedList<Event>();
-		all_contacts = new LinkedList<Contact>();
+		all_events = new LinkedListADT<Event>();
+		all_contacts = new LinkedListADT<Contact>();
 
 	}
 
-	public Phonebook(LinkedList<Contact> contacts) {
+	public Phonebook(LinkedListADT<Contact> contacts) {
 		this.all_contacts = all_contacts;
 
 	}
 	
 //this method add us in order
 	
-  public void Add_Sorted_User(Contact d) {
+public void Add_Sorted_User(Contact d) {
 	
 	if (all_contacts.empty()) {
 		
 	all_contacts.add(d);
 	return;
 }
-   else {
+else {
 	all_contacts.findFirst();
 	if(d.compareTo(all_contacts.retrieve().getName())<0){//1
 		Contact c = new Contact(all_contacts.retrieve());
@@ -99,8 +98,8 @@ import java.util.Scanner;
 	
 //this method searches for the contact using first name only
 	
-	public LinkedList<Contact> search__by_First_name(String n){
-		LinkedList<Contact>res = new LinkedList<Contact>();
+	public LinkedListADT<Contact> search__by_First_name(String n){
+		LinkedListADT<Contact>res = new LinkedListADT<Contact>();
 		if(all_contacts.empty())
 			return res;
 		all_contacts.findFirst();
@@ -153,17 +152,17 @@ import java.util.Scanner;
 
 	//this method searches using emails
 	
-	public LinkedList<Contact> search_email(String e) {
-		LinkedList<Contact> res = new LinkedList<Contact>();
+	public LinkedListADT<Contact> search_email(String e) {
+		LinkedListADT<Contact> res = new LinkedListADT<Contact>();
 		if (all_contacts.empty())
 			return res;
 		all_contacts.findFirst();
-		do {
-			if (all_contacts.retrieve().getEmail().equals(e)) {
-				res.add(all_contacts.retrieve());
+		 while (!all_contacts.isLast()){
+			if (all_contacts.retrieve().getEmail().equals(e)) 
+					res.add(all_contacts.retrieve());
 				all_contacts.findNext();
-			}
-		} while (!all_contacts.isLast());
+				
+		}
 		if (all_contacts.retrieve().getEmail().equals(e))
 			res.add(all_contacts.retrieve());
 		return res;
@@ -171,34 +170,31 @@ import java.util.Scanner;
 
 //this method searches using address
 
-	public LinkedList<Contact> search_address(String a) {
-		LinkedList<Contact> res = new LinkedList<Contact>();
+	public LinkedListADT<Contact> search_address(String a) {
+		LinkedListADT<Contact> res = new LinkedListADT<Contact>();
 		if (all_contacts.empty())
 			return res;
 		all_contacts.findFirst();
 		while (!all_contacts.isLast()) {
 			if (all_contacts.retrieve().getAddress().equals(a))
-				;
-			res.add(all_contacts.retrieve());
+				res.add(all_contacts.retrieve());
 			all_contacts.findNext();
 		}
 		if (all_contacts.retrieve().getAddress().equals(a))
-			;
-		res.add(all_contacts.retrieve());
+			res.add(all_contacts.retrieve());
 		return res;
 	}
 	
 //this method searches using day you were born
 
-	public LinkedList<Contact> search_birth(String b){
-	LinkedList<Contact> res=new LinkedList<Contact>();
+	public LinkedListADT<Contact> search_birth(String b){
+	LinkedListADT<Contact> res=new LinkedListADT<Contact>();
 	if(all_contacts.empty())
 		return res;
 	all_contacts.findFirst();
 	while(!all_contacts.isLast()) {
 		if(all_contacts.retrieve().getBirthday().equals(b))
-		res.add(all_contacts.retrieve());
-		
+			res.add(all_contacts.retrieve());
 		all_contacts.findNext();
 	}
 	if(all_contacts.retrieve().getBirthday().equals(b))
@@ -223,7 +219,7 @@ import java.util.Scanner;
 
 	//this method shows the name of the conatct
 	
-	public static void print_contacts_by_name(LinkedList<Contact> A) {
+	public static void print_contacts_by_name(LinkedListADT<Contact> A) {
 		if (!A.empty()) {
 			A.findFirst();
 			while (!A.isLast()) {
@@ -237,7 +233,7 @@ import java.util.Scanner;
 
 	//this method shows the lists of the all events
 	
-	public static void print_List_Events(LinkedList<Event> A) {
+	public static void print_List_Events(LinkedListADT<Event> A) {
 		if (!A.empty()) {
 			A.findFirst();
 			while (!A.isLast()) {
@@ -258,9 +254,9 @@ import java.util.Scanner;
 		if (found == null) {
 		}
 	}
-
+//this method makes sure there is no conflict
 	public boolean is_conflict(Event e,Contact c) {
-		LinkedList<Event>contacts_event=c.contact_event;
+		LinkedListADT<Event>contacts_event=c.contact_event;
 		if(contacts_event.empty()) 
 			return false;
 		
@@ -275,7 +271,7 @@ import java.util.Scanner;
 		else
 			return false;
 			}
-	
+	//this method schedules event
 	public void schedule_event(Event e, String contact_name) {
 		Contact this_contact = search__by_name(contact_name);
 		if(this_contact==null) {
@@ -303,14 +299,14 @@ import java.util.Scanner;
 		all_contacts.findFirst();
 			while(!all_contacts.isLast()) {//last
 				if(all_contacts.retrieve().getName().equals(s)) {
-					LinkedList<Event> A=getEvent_contact(s);
+					LinkedListADT<Event> A=getEvent_contact(s);
 					delete_events_with_contacts(s,A);
 					System.out.println(" contact has been removed ");
 					all_contacts.delete();  }
 				all_contacts.findNext();
 				}
 			if(all_contacts.retrieve().getName().equals(s)) {
-				LinkedList<Event>A=getEvent_contact(s);
+				LinkedListADT<Event>A=getEvent_contact(s);
 				delete_events_with_contacts(s,A);
 				System.out.println(" contact has been removed ");
 				all_contacts.delete();}
@@ -332,22 +328,22 @@ public static void menu() {
 	System.out.println("\nEnter your choice: ");
 }
 
-public LinkedList<Event> events_contact(String c){
+public LinkedListADT<Event> events_contact(String c){
 	Contact g = search__by_name(c);
 	if(c!=null) 
 		return g.contact_event;
-	return new LinkedList<Event>();
+	return new LinkedListADT<Event>();
 	
 }
 
-public LinkedList<Contact> contacts_event(String a){
+public LinkedListADT<Contact> contacts_event(String a){
 	Event f = search_event_title(a);
 	if(f!=null) 
 		return f.contact__event();
-	return new LinkedList<Contact>();
+	return new LinkedListADT<Contact>();
 	
 }
-public void delete_events_with_contacts(String s, LinkedList<Event>A){
+public void delete_events_with_contacts(String s, LinkedListADT<Event>A){
 	System.out.print(" ");
 	while(!A.empty()){
 		String E_title= A.retrieve().getEvent_title();
@@ -357,10 +353,10 @@ public void delete_events_with_contacts(String s, LinkedList<Event>A){
 }
 
 public static void search_criteria_for_searching() {
-	System.out.println("Enter  search criteria:\n"+ "1. Name\n" + "2. Phone Number\n" + "3. Email Address\n" + "4. Address\n" + "Birthday");
+	System.out.println("Enter  search criteria:\n"+ "1. Name\n" + "2. Phone Number\n" + "3. Email Address\n" + "4. Address\n" + "5. Birthday\n");
 }
 
-public static void print_Linked_List_of_all_contacts(LinkedList<Contact>L) {
+public static void print_Linked_List_of_all_contacts(LinkedListADT<Contact>L) {
 	if(L.empty())
 		System.out.println("empty list");
 	else {
@@ -376,7 +372,7 @@ public static void print_Linked_List_of_all_contacts(LinkedList<Contact>L) {
 }
 
 
-public void Linked_List_of_Events(LinkedList<Event>L) {
+public void Linked_List_of_Events(LinkedListADT<Event>L) {
 	if(L.empty())
 		System.out.println("empty list");
 	else {
@@ -405,21 +401,21 @@ public Event search_event_title(String s) {
 	return null;
 }
 
-public LinkedList<Event> getEvent_contact(String n){
+public LinkedListADT<Event> getEvent_contact(String n){
 	Contact this_contact = search__by_name(n);
 	if(this_contact!= null)
 		return this_contact.getContact_event();//
-	return new LinkedList<Event>();
+	return new LinkedListADT<Event>();
 }
-public LinkedList<Contact> getContact_event(String n){
+public LinkedListADT<Contact> getContact_event(String n){
 	Event this_event = search_event_title(n);
 	if(this_event!= null)
 		return this_event.contact__event();//
-	return new LinkedList<Contact>();
+	return new LinkedListADT<Contact>();
 }
 
 public void delete_event(String tit, String n){ 
-	LinkedList<Contact>contacts_with_cur_event=getContact_event(tit);
+	LinkedListADT<Contact>contacts_with_cur_event=getContact_event(tit);
 	print_contacts_by_name(contacts_with_cur_event);
 	contacts_with_cur_event.findFirst();
 	while(!contacts_with_cur_event.empty()&&!contacts_with_cur_event.isLast()){
@@ -430,7 +426,7 @@ public void delete_event(String tit, String n){
 		contacts_with_cur_event.findNext();
 	}
 	if(contacts_with_cur_event.retrieve().getName().equals(n)){
-		contacts_with_cur_event.delete();;
+		contacts_with_cur_event.delete();
 	}
 }
 
@@ -451,24 +447,42 @@ public static void main(String[]args) {
 		case 2:
 		search_criteria_for_searching();
 		search_option=read.nextInt();
-		read.nextInt();
-		LinkedList<Contact>res = new LinkedList<Contact>();
+		LinkedListADT<Contact>res = new LinkedListADT<Contact>();
 		switch(search_option) {
 		case 1:
 			System.out.println("Enter the contact's name: ");
-			Contact c1 = ph1.search__by_name(read.nextLine());
+			Contact c1;
+			try{
+			c1 = ph1.search__by_name(read.nextLine());
+			c1.display_contact();
+			}catch(NullPointerException n){
+				c1 = ph1.search__by_name(read.nextLine());
+			}
 			c1.display_contact();
 			break;
 			
 		case 2:		
 		System.out.println("Enter the contact's Phone: ");
-		Contact c2 = ph1.search__by_Phone(read.nextLine());
+		Contact c2;
+		try{
+		c2 = ph1.search__by_Phone(read.nextLine());
+		c2.display_contact();
+		}catch(NullPointerException e){
+		c2 = ph1.search__by_Phone(read.nextLine());
+		}
 		c2.display_contact();
 		break;
 		
 		case 3:
 		System.out.println("Enter the contact's Email: ");
-		res= ph1.search_email(read.nextLine());
+		String em;
+		try{
+		em = read.nextLine();
+		res = ph1.search_email(em);
+		}catch(NullPointerException e){
+			em = read.nextLine();
+		}
+		res = ph1.search_email(em);
 		if(!res.empty()) {
 			System.out.println("contact Found!");
 			print_Linked_List_of_all_contacts(res);
@@ -520,7 +534,7 @@ public static void main(String[]args) {
 			if(choose ==1) {
 				read.nextLine();
 				System.out.println("Enter the contact name ");
-				LinkedList<Event>L1=ph1.getEvent_contact(read.nextLine());
+				LinkedListADT<Event>L1=ph1.getEvent_contact(read.nextLine());
 				ph1.Linked_List_of_Events(L1);
 			}
 			else if(choose==2) {
@@ -554,4 +568,4 @@ public static void main(String[]args) {
 	}
 	while(ch!=8);
 	}
-}		
+}
