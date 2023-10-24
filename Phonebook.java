@@ -247,13 +247,21 @@ else {
 			System.out.println("is empty");
 	}
 
-//this method adds another event
-
-	public void add_Event(Event e) {
-		Event found = search_event_title(e.getEvent_title());
+public void Add_Sorted_Event(Event e) {
+	
+	if (all_events.empty()) {
+		
+	all_events.add(e);
+	return;
+}
+public void add_Event(Event e) {
+Event found=search_event_title(e.getEvent_title());
 		if (found == null) {
+all_events.Add_Sorted_Event(e);
 		}
 	}
+
+	
 //this method makes sure there is no conflict
 	public boolean is_conflict(Event e,Contact c) {
 		LinkedListADT<Event>contacts_event=c.contact_event;
