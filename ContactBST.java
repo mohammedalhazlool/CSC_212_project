@@ -115,7 +115,6 @@ public class ContactBST<T>{
 		}
 		return false;
 	}
-/* see the rest of this later
 	private BSTNode<T> remove_aux(int key, BSTNode<T> p, Boolean flag) {
 		BSTNode<T> q, child = null;
 		if(p == null)
@@ -158,5 +157,4 @@ public class ContactBST<T>{
 		remove_key(current.key);
 		return insert(key, data);
 	}
-*/
 }
