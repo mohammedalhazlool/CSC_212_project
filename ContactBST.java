@@ -130,9 +130,9 @@ public class ContactBST<T>{
 		BSTNode<T> q, child = null;
 		if(p == null)
 			return null;
-		if(key < p.key)
+		if(k1.compareToIgnoreCase(p.key)<0)
 			p.left = remove_aux(key, p.left, flag); //go left
-		else if(key > p.key)
+		else if(k1.compareToIgnoreCase(p.key)>0)
 			p.right = remove_aux(key, p.right, flag); //go right
 		else {
 			flag = true;
