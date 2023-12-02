@@ -9,25 +9,75 @@ MMA
 AUTHORS:
 Muhammed Alhithlool, 443101218, Abdullah Alsalman, 443105689
 ***********************************/
+/***********************************
+CLASS: Phonebook.java
+CSC212 Data structures - Project phase I
+Fall 2023
+EDIT DATE:
+14-10-2023
+TEAM:
+MMA
+AUTHORS:
+Muhammed Alhithlool, 443101218, Abdullah Alsalman, 443105689
+***********************************/
 package project; 
-
+import java.sql.Time;
 import java.util.Scanner;
 
 public class Phonebook {
+	static BST<Contacts>all_contacts_BST;
 	static LinkedListADT<Contact> all_contacts;
-	static LinkedListADT<Event> all_events;
+	static BST<Event> all_events_BST;
 
 	public Phonebook() {
 		all_events = new LinkedListADT<Event>();
-		all_contacts = new LinkedListADT<Contact>();
+		all_contacts_BST = new BST<Contact>();
+		all_events_BST = new BST<Event>();
 
 	}
 
 	public Phonebook(LinkedListADT<Contact> contacts) {
 		this.all_contacts = all_contacts;
-
 	}
 	
+	//this method adds contract
+	
+		public void add_contact(Contact c) {
+			boolean name_inserted=false;
+			boolean phoneExist=all_contacts_BST.check_phone_Exist(c.getNumber());
+			if(phoneExist)
+			System.out.println("the give contact has phone Exist before cannot add"+ c.getName());
+			else {
+				name_inserted = all_contacts_BST.inesert(c.getName(), c);
+				if(!name_inserted)
+					System.out.println("the given contact has name Exist before add "+ c.getName());
+		}
+		}
+		
+		//this method searches for the contact using the name of it
+		
+		public Contact search__by_name(String n) {
+			if (all_contacts_BST.empty())
+				return null;
+			boolean found = all_contacts_BST.findKey(n);
+			if(found)
+				return all_contacts_BST.retrieve();
+			return null
+		}
+		
+		//this method searches for the contact using first name only
+		
+		public LinkedListADT<Contact> search__by_First_name(String n){
+			return all_contacts_BST.search_bt_First_name(n);
+	}
+		
+		public static void print_all_contacts() {
+			all_contacts_BST.inOrder();
+		}
+		
+		public static void printa_all_contacts() {
+			all_contacts_BST.preOrder();
+		}
 //this method add us in order
 	
 public void Add_Sorted_User(Contact d) {
@@ -85,32 +135,9 @@ else {
 			return false;
 	}
 	
-//this method adds contract
-	
-	public void add_contact(Contact c) {
-		boolean found = search(c);
-		if (!found) {
-			all_contacts.addInOrder(c);//3
 
-		}
+	
 
-	}
-	
-//this method searches for the contact using first name only
-	
-	public LinkedListADT<Contact> search__by_First_name(String n){
-		LinkedListADT<Contact>res = new LinkedListADT<Contact>();
-		if(all_contacts.empty())
-			return res;
-		all_contacts.findFirst();
-		while(!all_contacts.isLast()){
-	String cur_Full_Name=all_contacts.retrieve().getName();
-	String First_name=cur_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
-	if(First_name.equals(n))
-		res.add(all_contacts.retrieve());
-	
-	all_contacts.findNext();
-}
 		String cur_Full_Name=all_contacts.retrieve().getName();
 		String First_name=cur_Full_Name.substring(0,cur_Full_Name.indexOf(" ")-1);
 		if(First_name.equals(n))
@@ -118,22 +145,7 @@ else {
 		return res;
 	}
 	
-	//this method searches for the contact using the name of it
 	
-	public Contact search__by_name(String n) {
-		if (all_contacts.empty())
-			return null;
-		all_contacts.findFirst();
-		while (!all_contacts.isLast()) {
-			if (!all_contacts.retrieve().getName().equals(n))
-				return all_contacts.retrieve();
-			all_contacts.findNext();
-		}
-		if (all_contacts.retrieve().getName().equals(n))
-			return all_contacts.retrieve();
-		return null;
-	}
-
 //this method searches for the contact using the number of the phone
 
 	public Contact search__by_Phone(String ph) {
@@ -247,21 +259,13 @@ else {
 			System.out.println("is empty");
 	}
 
-public void Add_Sorted_Event(Event e) {
-	
-	if (all_events.empty()) {
-		
-	all_events.add(e);
-	return;
-}
-public void add_Event(Event e) {
-Event found=search_event_title(e.getEvent_title());
+//this method adds another event
+
+	public void add_Event(Event e) {
+		Event found = search_event_title(e.getEvent_title());
 		if (found == null) {
-all_events.Add_Sorted_Event(e);
 		}
 	}
-
-	
 //this method makes sure there is no conflict
 	public boolean is_conflict(Event e,Contact c) {
 		LinkedListADT<Event>contacts_event=c.contact_event;
@@ -310,6 +314,273 @@ all_events.Add_Sorted_Event(e);
 					LinkedListADT<Event> A=getEvent_contact(s);
 					delete_events_with_contacts(s,A);
 					System.out.println(" contact has been removed ");
+					all_contacts.delete();  }
+				all_contacts.findNext();
+				}
+			if(all_contacts.retrieve().getName().equals(s)) {
+				LinkedListADT<Event>A=getEvent_contact(s);
+				delete_events_with_contacts(s,A);
+				System.out.println(" contact has been removed ");
+				all_contacts.delete();}
+	}
+		
+	
+
+public static void menu() {
+	System.out.println("Welcome to the Lonked Tree Phonebook!");
+	System.out.println("Please chose an option");
+	System.out.println("1. Add a contact");
+	System.out.println("2. Search for a contact");
+	System.out.println("3. Delete a contact");
+	System.out.println("4. schedule an event");
+	System.out.println("5. Print event details");
+	System.out.println("6. Print contacts by first name");
+	System.out.println("7. Print all events alphabetically");
+	System.out.println("8. Exit");
+	System.out.println("\nEnter your choice: ");
+}
+
+public LinkedListADT<Event> events_contact(String c){
+	Contact g = search__by_name(c);
+	if(c!=null) 
+		return g.contact_event;
+	return new LinkedListADT<Event>();
+	
+}
+
+public LinkedListADT<Contact> contacts_event(String a){
+	Event f = search_event_title(a);
+	if(f!=null) 
+		return f.contact__event();
+	return new LinkedListADT<Contact>();
+	
+}
+public void delete_events_with_contacts(String s, LinkedListADT<Event>A){
+	System.out.print(" ");
+	while(!A.empty()){
+		String E_title= A.retrieve().getEvent_title();
+		delete_event(E_title, s);//delete
+		A.delete();  
+	}
+}
+
+public static void search_criteria_for_searching() {
+	System.out.println("Enter  search criteria:\n"+ "1. Name\n" + "2. Phone Number\n" + "3. Email Address\n" + "4. Address\n" + "5. Birthday\n");
+}
+
+public static void print_Linked_List_of_all_contacts(LinkedListADT<Contact>L) {
+	if(L.empty())
+		System.out.println("empty list");
+	else {
+		L.findFirst();
+		while(!L.isLast()) {
+			L.retrieve().display_contact();
+			System.out.println("");
+			L.findNext();
+		}
+		L.retrieve().display_contact();
+		System.out.println("");
+	}
+}
+
+
+public void Linked_List_of_Events(LinkedListADT<Event>L) {
+	if(L.empty())
+		System.out.println("empty list");
+	else {
+		L.findFirst();
+		while(!L.isLast()) {
+			System.out.println(L.retrieve());
+			System.out.println("this event has the following contacts");
+			print_contacts_by_name(L.retrieve().contact__event);
+			System.out.println("");
+			L.findNext();
+		}
+	}
+}
+
+public Event search_event_title(String s) {
+	if(all_events.empty())
+		return null;
+	all_events.findFirst();
+	while(!all_events.isLast()) {
+		if(all_events.retrieve().getEvent_title().equals(s))
+			return all_events.retrieve();
+		all_events.findFirst();
+		}
+	if(all_events.retrieve().getEvent_title().equals(s))
+		return all_events.retrieve();
+	return null;
+}
+
+public LinkedListADT<Event> getEvent_contact(String n){
+	Contact this_contact = search__by_name(n);
+	if(this_contact!= null)
+		return this_contact.getContact_event();//
+	return new LinkedListADT<Event>();
+}
+public LinkedListADT<Contact> getContact_event(String n){
+	Event this_event = search_event_title(n);
+	if(this_event!= null)
+		return this_event.contact__event();//
+	return new LinkedListADT<Contact>();
+}
+
+public void delete_event(String tit, String n){ 
+	LinkedListADT<Contact>contacts_with_cur_event=getContact_event(tit);
+	print_contacts_by_name(contacts_with_cur_event);
+	contacts_with_cur_event.findFirst();
+	while(!contacts_with_cur_event.empty()&&!contacts_with_cur_event.isLast()){
+		if(contacts_with_cur_event.retrieve().getName().equals(n)){
+			contacts_with_cur_event.delete();
+			break;
+		}
+		contacts_with_cur_event.findNext();
+	}
+	if(contacts_with_cur_event.retrieve().getName().equals(n)){
+		contacts_with_cur_event.delete();
+	}
+}
+
+public static void main(String[]args) {
+	Phonebook ph1 = new Phonebook();
+	Scanner read = new Scanner(System.in);
+	int ch =-1,search_option=-1;
+	do {
+		menu();
+		ch=read.nextInt();
+		switch(ch) {
+		case 1:
+			Contact c = new Contact();
+			c.read_contact();
+			ph1.add_contact(c);
+			break;
+			
+		case 2:
+		search_criteria_for_searching();
+		search_option=read.nextInt();
+		LinkedListADT<Contact>res = new LinkedListADT<Contact>();
+		switch(search_option) {
+		case 1:
+			System.out.println("Enter the contact's name: ");
+			Contact c1;
+			try{
+			c1 = ph1.search__by_name(read.nextLine());
+			c1.display_contact();
+			}catch(NullPointerException n){
+				c1 = ph1.search__by_name(read.nextLine());
+			}
+			c1.display_contact();
+			break;
+			
+		case 2:		
+		System.out.println("Enter the contact's Phone: ");
+		Contact c2;
+		try{
+		c2 = ph1.search__by_Phone(read.nextLine());
+		c2.display_contact();
+		}catch(NullPointerException e){
+		c2 = ph1.search__by_Phone(read.nextLine());
+		}
+		c2.display_contact();
+		break;
+		
+		case 3:
+		System.out.println("Enter the contact's Email: ");
+		String em;
+		try{
+		em = read.nextLine();
+		res = ph1.search_email(em);
+		}catch(NullPointerException e){
+			em = read.nextLine();
+		}
+		res = ph1.search_email(em);
+		if(!res.empty()) {
+			System.out.println("contact Found!");
+			print_Linked_List_of_all_contacts(res);
+		}
+		else
+			System.out.println("contact not Found!");
+		break;
+		
+		case 4:
+			System.out.println("Enter the contact's Address: ");
+			res= ph1.search_address(read.nextLine());
+			if(!res.empty()) {
+				System.out.println("contact Found!");
+				print_contacts_by_name(res);
+			}
+		break;
+		
+		case 5:
+			System.out.println("Enter the contact's Birthday: ");
+			res= ph1.search_birth(read.nextLine());
+			if(!res.empty()) {
+				System.out.println("contact Found!");
+				print_Linked_List_of_all_contacts(res);
+			}
+				else
+					System.out.println("contact not Found!");
+				break;
+		
+		}
+		break;
+	
+		case 3:
+			read.nextLine();
+			System.out.println("Enter the contact's name: ");
+			ph1.delete_contact(read.nextLine());
+			break;
+			
+		case 4:
+			Event e = new Event();
+			ph1.add_Event(e);
+			ph1.schedule_event(e,read.nextLine());
+			break;
+			
+		case 5:
+			read.nextLine();
+			search_criteria_for_searching();
+			int choose = read.nextInt();
+			
+			if(choose ==1) {
+				read.nextLine();
+				System.out.println("Enter the contact name ");
+				LinkedList<Event>L1=ph1.getEvent_contact(read.nextLine());
+				ph1.Linked_List_of_Events(L1);
+			}
+			else if(choose==2) {
+			read.nextLine();
+			System.out.println("Enter the event title ");
+            Event ev = ph1.search_event_title(read.nextLine());
+            if(ev!=null) {
+            	System.out.println("Event Found\n");
+            	System.out.println(ev);
+            }
+            else
+            	System.out.println("Event not Found");
+}
+			break;
+			
+		case 6:
+			
+			print_contacts_by_name(all_contacts);
+
+			break;
+			
+		case 7:
+			ph1.Linked_List_of_Events(all_events);
+			break;
+			
+		case 8:
+			System.out.println("\nGoodBye!");
+			break;
+		
+		}
+	}
+	while(ch!=8);
+	}
+}}
 					all_contacts.delete();  }
 				all_contacts.findNext();
 				}
