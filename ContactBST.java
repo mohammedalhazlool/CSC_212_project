@@ -1,5 +1,5 @@
 /***********************************
-CLASS: Phonebook.java
+CLASS: ContactBST.java and BSTNode.java
 CSC212 Data structures - Project phase II
 WINTER 2023
 EDIT DATE:
