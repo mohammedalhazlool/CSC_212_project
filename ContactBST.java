@@ -126,7 +126,7 @@ public class ContactBST<T>{
 		}
 		return false;
 	}
-	private BSTNode<T> remove_aux(int key, BSTNode<T> p, Boolean flag) {
+	private BSTNode<T> remove_aux(String key, BSTNode<T> p, Boolean flag) {
 		BSTNode<T> q, child = null;
 		if(p == null)
 			return null;
@@ -164,7 +164,7 @@ public class ContactBST<T>{
 		return p;
 	}
 	
-	public boolean update(int key, T data){
+	public boolean update(String key, T data){
 		remove_key(current.key);
 		return insert(key, data);
 	}
