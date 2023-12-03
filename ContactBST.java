@@ -206,7 +206,30 @@ public class ContactBST<T>{
 		rec_search_by_first_name(p.right,res,n);
 	}
 	
+	public void inOrder(BSTNode<contact_BST>p){
+		if(p==null)
+			return;
+		inOrder(p.left);
+		System.out.println("Key = "+p.key);
+		System.out.println(p.data.toString());
+		inOrder(p.right);
+	}
 
+	public void preOrder(){
+		if(root==null)
+			System.out.println("Empty Tree");
+		else
+			preOrder((BSTNode<contact_BST>)root);
+	}
+	
+	private void preOrder(BSTNode<contact_BST> p){
+		if(p==null)
+			return;
+		System.out.println("Key = "+p.key);
+		System.out.println(p.data.toString());
+		preOrder(p.left);
+		preOrder(p.right);
+	}
 
 
 	
