@@ -1,9 +1,9 @@
 /***********************************
 CLASS: Contact.java
 CSC212 Data structures - Project phase I
-Fall 2023
+Winter 2023
 EDIT DATE:
-14-10-2023
+28-11-2023
 TEAM:
 MMA
 AUTHORS:
