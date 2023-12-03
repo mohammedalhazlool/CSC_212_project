@@ -243,20 +243,19 @@ public class Phonebook {
 			
 			}
 			public LinkedList<Event> getEvents_in_contact(String n){
-		Contact this_contact=search_by_name(n);
+		Contact this_contact=search__by_name(n);
 		if(this_contact!=null) 
-			return this_contact.getContact_events();
+			return this_contact.getContact_event();
 		return new LinkedList<Event>();
 
 	}
 	public LinkedList<Contact> getContacts_in_Event(String n){
-		Contact this_contact=search_Event__by_Title(n);
-		if(this_Event!=null) 
-			return this_Event.getContact_with_event();
-		return new LinkedList<Contact>();
+		Event this_Event=search_Event_by_Title(n);
+		if(this_Event!=null) {
+			return this_Event.contact_with_event();
+		}	return new LinkedList<Contact>();
 
 	}
-		}
 public void add_Event(Event e) {
 			Event found = search_Event_by_Title(e.getEvent_title());
 			if(found==null)
