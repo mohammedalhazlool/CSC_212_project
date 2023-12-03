@@ -231,6 +231,19 @@ public class ContactBST<T>{
 		preOrder(p.right);
 	}
 
+	public boolean is_conflict(event_BST e){
+		if(root==null)
+			return false;
+		return is_conflict(e,(BSTNode<event_BST>)root);
+	}
+
+	public boolean is_conflict(event_BST e, BSTNode<event_BST> p){
+		if(p==null)
+			return false;
+		if((e.getEvent_date().equals(p.data.getEvent_date()))&&(e.getEvent_time().equals(p.data.getEvent_time())))
+			return true;
+		return is_conflict(e, p.left) || is_conflict(e, p.right);
+	}
 
 	
 }
