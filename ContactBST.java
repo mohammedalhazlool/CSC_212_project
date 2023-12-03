@@ -1,7 +1,7 @@
 /***********************************
 CLASS: ContactBST.java and BSTNode.java
 CSC212 Data structures - Project phase II
-WINTER 2023
+Winter 2023
 EDIT DATE:
 28-11-2023
 TEAM:
@@ -168,4 +168,46 @@ public class ContactBST<T>{
 		remove_key(current.key);
 		return insert(key, data);
 	}
+
+	public boolean check_phone_Exist(String ph){
+		if(root==null)
+			return false;
+		else
+			return check_phone_inOrder((BSTNode<contact_BST>)p,ph);
+	}
+
+	private boolean check_phone_inOrder(BSTNode<contact_BST> p, String ph){
+		if(p==null)
+			return false;
+		boolean exist_in_left = check_phone_inOrder(p.left, String ph);
+		if(exist_in_left)
+			return true;
+		if(p.data.get_number().equals(ph))
+			return true;
+		return check_phone_inOrder(p.right,ph);
+	}
+
+	public LinkedList<contact_BST> search_by_first_name(String n){
+		LinkedList<contact_BST> res = new LinkedList<contact_BST>();
+		if(root==null)
+			return res;
+		rec_search_by_first_name(root,res,n);
+		return res;
+	}
+
+	private void rec_search_by_first_name(BSTNode<T> p, LinkedList<contact_BST> res, String n){
+		if(p==null)
+			return;
+		rec_search_by_first_name(p.left,res,n);
+		String curFullName = p.key;
+		String firstName = curFullName.substring(0,curFullName.indexOf(' '));
+		if(firstName.equalsIgnoreCase(n))
+			res.insert((contact_BST)p.data);
+		rec_search_by_first_name(p.right,res,n);
+	}
+	
+
+
+
+	
 }
