@@ -29,7 +29,7 @@ class BSTNode<T>{
 }
 
 public class ContactBST<T>{
-	BSTNode<T> root, current;
+	private BSTNode<T> root, current;
 	
 	public ContactBST(){
 		root = current = null;
@@ -38,7 +38,9 @@ public class ContactBST<T>{
 	public boolean empty(){
 		return root==null;
 	}
-	
+	public void clear() {
+		current = root = null;
+	}
 	public boolean full(){
 		return false;
 	}
@@ -244,6 +246,60 @@ public class ContactBST<T>{
 			return true;
 		return is_conflict(e, p.left) || is_conflict(e, p.right);
 	}
-
+public void findRoot() {
+		current =root;
+	}
+	public String curkey() {
+		return current.key;
+	}
+	public void findRight() {
+		current =root;
+	}
+	public void findLeft() {
+		current =root;
+	}
+	public int nbCompkey(String k) {
+		int nb=0;
+		BSTNode<T> p = root;
+		while(p!= null) {
+			nb++;
+			if(k.compareToIgnoreCase(p.key)==0){
+				return nb;
+			
+		}else if(k.compareToIgnoreCase(p.key)<0) {
+			p = p.left;
+		}else {
+			p = p.right;
+		}}
+		return nb;
+		}
+	public int is_greater(String tt1, String tt2) {
+		String a1[]=tt1.split(":");
+		String a2[]=tt1.split(":");
+		if(Integer.parseInt(a1[0])>Integer.parseInt(a2[0])) 
+		return 1;
+		else if(Integer.parseInt(a1[0])<Integer.parseInt(a2[0])) 
+		return -1;
+		else {
+			if(Integer.parseInt(a1[1])>Integer.parseInt(a2[1])) 
+				return 1;
+				else if(Integer.parseInt(a1[1])<Integer.parseInt(a2[1])) 
+				return -1;
+				else
+					return 0;
+		}
+	}
+public int is_greater1(String tt1, String tt2) {
+		String a1[]=tt1.split(":");
+		String a2[]=tt1.split(":");
+		Time t1=new Time(Integer.parseInt(a1[0]),Integer.parseInt(a1[1]),0);
+		Time t2=new Time(Integer.parseInt(a2[0]),Integer.parseInt(a2[1]),0);
+		return t1.compareTo(t2);
+	}
+	
+	public boolean update(String key, T data){
+		remove_key(current.key);
+		return insert(key, data);
+	}
 	
 }
