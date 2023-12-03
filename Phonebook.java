@@ -240,5 +240,20 @@ public class Phonebook {
 				String cur_event_title = L.retrieve().getEvent_title();
 				delete_event(cur_event_title, n);
 				L.delete();
+			
 			}
+			public LinkedList<Event> getEvents_in_contact(String n){
+		Contact this_contact=search_by_name(n);
+		if(this_contact!=null) 
+			return this_contact.getContact_events();
+		return new LinkedList<Event>();
+
+	}
+	public LinkedList<Contact> getContacts_in_Event(String n){
+		Contact this_contact=search_Event__by_Title(n);
+		if(this_Event!=null) 
+			return this_Event.getContact_with_event();
+		return new LinkedList<Contact>();
+
+	}
 		}
