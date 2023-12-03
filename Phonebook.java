@@ -257,3 +257,8 @@ public class Phonebook {
 
 	}
 		}
+public void add_Event(Event e) {
+			Event found = search_Event_by_Title(e.getEvent_title());
+			if(found==null)
+				all_events.addInOrder(e);
+		}
