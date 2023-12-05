@@ -1,3 +1,9 @@
+package project;
+
+
+import java.sql.Time;
+import java.util.LinkedList;
+
 /***********************************
 CLASS: ContactBST.java and BSTNode.java
 CSC212 Data structures - Project phase II
@@ -29,17 +35,21 @@ class BSTNode<T>{
 }
 
 public class ContactBST<T>{
+	
 	private BSTNode<T> root, current;
 	
 	public ContactBST(){
 		root = current = null;
 	}
-	
+
 	public boolean empty(){
 		return root==null;
 	}
 	public void clear() {
 		current = root = null;
+	}
+	public void findNext() {
+	current= current.right;
 	}
 	public boolean full(){
 		return false;
@@ -175,40 +185,73 @@ public class ContactBST<T>{
 		if(root==null)
 			return false;
 		else
-			return check_phone_inOrder((BSTNode<contact_BST>)p,ph);
+			return check_phone_inOrder((BSTNode<Contact>)root,ph);
 	}
 
-	private boolean check_phone_inOrder(BSTNode<contact_BST> p, String ph){
+	private boolean check_phone_inOrder(BSTNode<Contact> p, String ph){
 		if(p==null)
 			return false;
-		boolean exist_in_left = check_phone_inOrder(p.left, String ph);
+		boolean exist_in_left = check_phone_inOrder(p.left, ph);
 		if(exist_in_left)
 			return true;
-		if(p.data.get_number().equals(ph))
+		if(p.data.getNumber().equals(ph))
 			return true;
 		return check_phone_inOrder(p.right,ph);
 	}
 
-	public LinkedList<contact_BST> search_by_first_name(String n){
-		LinkedList<contact_BST> res = new LinkedList<contact_BST>();
+	public LinkedList<Contact> search_by_first_name(String n){
+		LinkedList<Contact> res = new LinkedList<Contact>();
 		if(root==null)
 			return res;
 		rec_search_by_first_name(root,res,n);
 		return res;
 	}
-
-	private void rec_search_by_first_name(BSTNode<T> p, LinkedList<contact_BST> res, String n){
-		if(p==null)
-			return;
-		rec_search_by_first_name(p.left,res,n);
-		String curFullName = p.key;
-		String firstName = curFullName.substring(0,curFullName.indexOf(' '));
-		if(firstName.equalsIgnoreCase(n))
-			res.insert((contact_BST)p.data);
-		rec_search_by_first_name(p.right,res,n);
+	public LinkedList<Contact> search_by_email(String n) {
+		LinkedList<Contact> res = new LinkedList<Contact>();
+		if(root==null)
+			return res;
+		rec_search_by_Email(root,res,n);
+		return res;
 	}
 	
-	public void inOrder(BSTNode<contact_BST>p){
+	private void rec_search_by_Email(BSTNode<T> root2, LinkedList<Contact> res, String n) {
+		if(root2==null)return;
+		rec_search_by_Email(root2.left,res,n);
+		
+		if(((Contact)root2.data).getEmail().equals(n)) {
+			res.add((Contact)root2.data);
+		}
+		rec_search_by_Email(root2.right,res,n);
+	}
+	public LinkedList<Contact>search_by_first_name1(String n){
+		LinkedList<Contact>res=new LinkedList<Contact>();
+		if(root==null)
+			return res;
+rec_search_by_first_name(root,res,n);
+return res;
+	}
+	private void rec_search_by_first_name(BSTNode<T>p, LinkedList<Contact> res, String n) {
+		if(p==null) {
+			return;}
+		rec_search_by_first_name(p.left,res,n);
+		String cur_full_Name=p.key;
+		String First_name=cur_full_Name.substring(0,cur_full_Name.indexOf(" "));
+		if(First_name.equals(n)) {
+///			res.insert((Contact)p.data);
+			}
+	
+		rec_search_by_first_name(p.right,res,n);
+	
+
+}
+	public void inOrder() {
+		if(root==null)
+			System.out.println("empty tree");
+			else
+				inOrder((BSTNode<Contact>)root);
+			
+		}
+	public void inOrder(BSTNode<Contact>p){
 		if(p==null)
 			return;
 		inOrder(p.left);
@@ -221,10 +264,10 @@ public class ContactBST<T>{
 		if(root==null)
 			System.out.println("Empty Tree");
 		else
-			preOrder((BSTNode<contact_BST>)root);
+			preOrder((BSTNode<Contact>)root);
 	}
 	
-	private void preOrder(BSTNode<contact_BST> p){
+	private void preOrder(BSTNode<Contact> p){
 		if(p==null)
 			return;
 		System.out.println("Key = "+p.key);
@@ -233,13 +276,13 @@ public class ContactBST<T>{
 		preOrder(p.right);
 	}
 
-	public boolean is_conflict(event_BST e){
+	public boolean is_conflict(Event e){
 		if(root==null)
 			return false;
-		return is_conflict(e,(BSTNode<event_BST>)root);
+		return is_conflict(e,(BSTNode<Event>)root);
 	}
 
-	public boolean is_conflict(event_BST e, BSTNode<event_BST> p){
+	public boolean is_conflict(Event e, BSTNode<Event> p){
 		if(p==null)
 			return false;
 		if((e.getEvent_date().equals(p.data.getEvent_date()))&&(e.getEvent_time().equals(p.data.getEvent_time())))
@@ -297,9 +340,11 @@ public int is_greater1(String tt1, String tt2) {
 		return t1.compareTo(t2);
 	}
 	
-	public boolean update(String key, T data){
+	public boolean update1(String key, T data){
 		remove_key(current.key);
 		return insert(key, data);
 	}
+
+	
 	
 }
